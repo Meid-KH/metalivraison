@@ -19,22 +19,22 @@ const menuItems = [
 ];
 const socialLinks = [
 	{
-		url: "facebook.com",
+		url: "https://www.facebook.com",
 		icon: <Icons.facebook strokeWidth={1.5} className="w-5 h-5" />,
 		label: "Facebook",
 	},
 	{
-		url: "youtube.com",
+		url: "https://www.youtube.com",
 		icon: <Icons.youtube strokeWidth={1.5} className="w-5 h-5" />,
 		label: "Youtube",
 	},
 	{
-		url: "instagram.com",
+		url: "https://www.instagram.com",
 		icon: <Icons.instagram strokeWidth={1.5} className="w-5 h-5" />,
 		label: "Instagram",
 	},
 	{
-		url: "twitter.com",
+		url: "https://www.twitter.com",
 		icon: <Icons.twitter strokeWidth={1.5} className="w-5 h-5" />,
 		label: "Twitter",
 	},
@@ -89,7 +89,7 @@ export default function Footer() {
 			</div>
 			<div className="py-6 border-t border-gray-800">
 				<div className="container">
-					<p className="text-xs tracking-wider text-center uppercase">
+					<p className="text-xs tracking-wider text-center text-gray-400 uppercase">
 						Metalivraison © 2023 — Tous droits résérvés
 					</p>
 				</div>

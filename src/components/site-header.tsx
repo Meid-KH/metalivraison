@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import Link from "next/link";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 interface MenuItem {
 	title: string;
@@ -45,7 +46,7 @@ const Header = () => {
 					</div>
 				</div>
 			</nav>
-			<header className="px-4 py-6 bg-gray-100">
+			<header className="sticky top-0 px-4 py-6 bg-gray-200/40 backdrop-blur-xl">
 				<div className="container">
 					<div className="flex items-center justify-between">
 						{/* Logo */}
@@ -55,12 +56,16 @@ const Header = () => {
 
 						{/* Menu */}
 						<nav>
-							<ul className="flex p-4 space-x-10 text-sm">
+							<ul className="flex text-sm">
 								{menuItems.map((item, index) => (
 									<li key={index}>
 										<a
 											href={item.url}
-											className="font-medium text-gray-700 hover:text-gray-900 hover:underline underline-offset-4"
+											className={cn(
+												"font-medium text-gray-700 inline-block px-5 py-2.5 rounded-full overflow-hidden",
+												"relative before:absolute before:inset-0 before:bg-dark before:rounded-full before:-z-10 before:opacity-0 before:scale-50 before:origin-center before:transition-all",
+												"hover:text-white hover:before:opacity-100 hover:before:scale-100"
+											)}
 										>
 											{item.title}
 										</a>
