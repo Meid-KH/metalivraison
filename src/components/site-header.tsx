@@ -26,7 +26,7 @@ const Header = () => {
 							<i className="grid w-6 h-6 rounded-full place-items-center bg-primary text-primary-foreground">
 								<Icons.arrowRight className="w-4 h-4" />
 							</i>
-							Livré avec metalivraison
+							Livrer avec metalivraison
 						</span>
 						<Button
 							variant="ghost"
@@ -46,38 +46,44 @@ const Header = () => {
 					</div>
 				</div>
 			</nav>
-			<header className="sticky top-0 px-4 py-6 bg-gray-200/40 backdrop-blur-xl">
-				<div className="container">
-					<div className="flex items-center justify-between">
+			<header className="sticky top-0 px-4 py-4 bg-gray-200/40 backdrop-blur-xl">
+				<div className="container px-0">
+					<div className="flex items-center justify-between gap-6">
 						{/* Logo */}
-						<Link href="/" className="block w-56">
-							<Icons.logo />
+						<Link href="/" className="block md:w-56">
+							<Icons.logo className="hidden md:block" />
+							<Icons.logoSmall className="block w-12 h-12 md:hidden" />
 						</Link>
 
 						{/* Menu */}
-						<nav>
-							<ul className="flex text-sm">
-								{menuItems.map((item, index) => (
-									<li key={index}>
-										<a
-											href={item.url}
-											className={cn(
-												"font-medium text-gray-700 inline-block px-5 py-2.5 rounded-full overflow-hidden",
-												"relative before:absolute before:inset-0 before:bg-dark before:rounded-full before:-z-10 before:opacity-0 before:scale-50 before:origin-center before:transition-all",
-												"hover:text-white hover:before:opacity-100 hover:before:scale-100"
-											)}
-										>
-											{item.title}
-										</a>
-									</li>
-								))}
-							</ul>
-						</nav>
+						<ul className="items-center hidden text-sm md:flex">
+							{menuItems.map((item, index) => (
+								<li key={index}>
+									<a
+										href={item.url}
+										className={cn(
+											"font-medium text-gray-700 block px-5 py-2.5 rounded-full overflow-hidden",
+											"relative before:absolute before:inset-0 before:bg-dark before:rounded-full before:-z-10 before:opacity-0 before:scale-50 before:origin-center before:transition-all",
+											"hover:text-white hover:before:opacity-100 hover:before:scale-100"
+										)}
+									>
+										{item.title}
+									</a>
+								</li>
+							))}
+						</ul>
 
 						{/* CTA Button */}
-						<div className="flex items-center gap-3">
-							<Button>Livré avec Metalivraison</Button>
-							<Button size="icon">
+						<div className="flex items-center flex-shrink-0 gap-3">
+							<Button className="h-10 px-5">
+								Livrer avec metalivraison
+							</Button>
+							<Button
+								size="icon"
+								className="w-10 h-10"
+								title="Se connecter"
+							>
+								{/* Se connecter */}
 								<Icons.login className="w-5 h-5" />
 							</Button>
 						</div>

@@ -69,7 +69,7 @@ const ContactForm: React.FC<{
 				onSubmit={form.handleSubmit(onSubmit)}
 				className={cn(
 					className,
-					"space-y-6 xl:space-y-8___ rounded-2xl border border-gray-200 bg-gray-100 p-6 xl:p-8___"
+					"space-y-6 xl:space-y-8___ rounded-2xl border border-gray-200 bg-gray-100 p-4 lg:p-6"
 				)}
 			>
 				<div className="grid gap-6 xl:gap-8___ grid-col-1 xl:grid-cols-2">
@@ -138,7 +138,7 @@ const ContactForm: React.FC<{
 					type="submit"
 					className="flex-shrink-0 gap-2 xl:col-span-2 w-full max-w-[150px]"
 				>
-					Submit
+					Envoyer
 				</Button>
 			</form>
 		</Form>

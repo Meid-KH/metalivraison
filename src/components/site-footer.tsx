@@ -44,7 +44,7 @@ export default function Footer() {
 	return (
 		<footer className="bg-black text-background/80">
 			<div className="container">
-				<div className="grid py-16 grid-cols-2lg:grid-cols-3 lg:grid-cols-3">
+				<div className="grid grid-cols-2 gap-8 py-16 md:grid-cols-3">
 					<div className="col-span-2 space-y-4">
 						{/* Logo */}
 						<Icons.logoDark className="w-64" />

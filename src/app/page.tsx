@@ -26,7 +26,7 @@ const Hero = () => {
 			<div className="container">
 				<div className="grid items-center grid-cols-1 gap-8 md:grid-cols-2">
 					<div className="space-y-6">
-						<h1 className="font-black tracking-tight text-8xl text-primary">
+						<h1 className="text-6xl font-black tracking-tight lg:text-8xl text-primary">
 							On — time Satisfaction
 						</h1>
 						<p>
@@ -36,19 +36,21 @@ const Hero = () => {
 							Metalivraison s’adapte aux évolutions de livraison
 							au Maroc.
 						</p>
-						<div className="flex space-x-4">
+						<div className="flex flex-wrap gap-4 sm:flex-nowrap md:flex-wrap lg:flex-nowrap">
 							<Link
 								href="/"
 								className={cn(
-									buttonVariants({ variant: "default" })
+									buttonVariants({ variant: "default" }),
+									"w-full sm:w-max"
 								)}
 							>
-								Livré avec Metalivraison
+								Livrer avec metalivraison
 							</Link>
 							<Link
 								href="/"
 								className={cn(
-									buttonVariants({ variant: "outline" })
+									buttonVariants({ variant: "outline" }),
+									"w-full sm:w-max"
 								)}
 							>
 								Espace client
@@ -58,7 +60,7 @@ const Hero = () => {
 					<div className="w-full">
 						<Image
 							className="ml-auto"
-							src="/img/intro.png"
+							src="/img/hero-map.gif"
 							alt="Intro Image"
 							width={600}
 							height={400}
@@ -75,7 +77,7 @@ const Tracking = () => {
 		<section id="tracking" className="py-24 bg-gray-100">
 			<div className="container">
 				<div className="space-y-2 text-center">
-					<h2 className="text-6xl font-extrabold tracking-tight text-primary">
+					<h2 className="text-5xl font-extrabold tracking-tight md:text-6xl text-primary">
 						Suivi de commande
 					</h2>
 					<p className="text-dark/70">
@@ -84,42 +86,42 @@ const Tracking = () => {
 					</p>
 				</div>
 				<TrackingForm />
-				<ul className="flex items-start justify-center gap-32 mt-24">
+				<ul className="flex flex-wrap items-start justify-between gap-4 mt-8 lg:justify-center md:mt-12 lg:mt-24 lg:gap-10 xl:gap-32">
 					{/* {[1, 2, 3, 4].map((item, index) => (
               ))} */}
 					<li className="flex flex-col gap-1.5 items-center text-center">
 						<Icons.truck
 							// strokeWidth={1}
-							className="w-20 h-20 text-primary"
+							className="w-16 h-16 md:w-20 md:h-20 text-primary"
 						/>
-						<span className="font-medium leading-snug">
+						<span className="text-sm font-medium lfirst-letter:eading-snug md:text-base">
 							Colis collecté
 						</span>
 					</li>
 					<li className="flex flex-col gap-1.5 items-center text-center">
 						<Icons.cogTriple
 							// strokeWidth={1}
-							className="w-20 h-20 text-primary"
+							className="w-16 h-16 md:w-20 md:h-20 text-primary"
 						/>
-						<span className="font-medium leading-snug">
+						<span className="text-sm font-medium lfirst-letter:eading-snug md:text-base">
 							Colis en cours de <br className="" /> traitement
 						</span>
 					</li>
 					<li className="flex flex-col gap-1.5 items-center text-center">
 						<Icons.clock
 							// strokeWidth={0.5}
-							className="w-20 h-20 p-3.5 text-primary"
+							className="w-16 h-16 md:w-20 md:h-20 p-3.5 text-primary"
 						/>
-						<span className="font-medium leading-snug">
+						<span className="text-sm font-medium lfirst-letter:eading-snug md:text-base">
 							Colis en cours <br className="" /> de livraison
 						</span>
 					</li>
 					<li className="flex flex-col gap-1.5 items-center text-center">
 						<Icons.check
 							strokeWidth={1.15}
-							className="w-20 h-20 p-2 text-primary"
+							className="w-16 h-16 p-2 md:w-20 md:h-20 text-primary"
 						/>
-						<span className="font-medium leading-snug">
+						<span className="text-sm font-medium lfirst-letter:eading-snug md:text-base">
 							Colis livré
 						</span>
 					</li>
@@ -166,7 +168,7 @@ const Services = () => {
 		<section id="services" className="py-24">
 			<div className="container">
 				<div className="space-y-3 text-center">
-					<h2 className="text-6xl font-extrabold tracking-tight text-primary">
+					<h2 className="text-5xl font-extrabold tracking-tight md:text-6xl text-primary">
 						Découvrez nos services
 					</h2>
 					<p className="text-dark/70">
@@ -181,7 +183,7 @@ const Services = () => {
 							<li
 								key={index}
 								className={cn(
-									"flex flex-col items-center gap-1.5 text-center bg-gray-100 sm:p-6 xl:p-8 rounded-2xl",
+									"flex flex-col items-center gap-1.5 text-center bg-gray-100 p-4 sm:p-6 xl:p-8 rounded-2xl",
 									"border border-gray-200"
 								)}
 							>
@@ -204,7 +206,7 @@ const Services = () => {
 								buttonVariants({ variant: "default" })
 							)}
 						>
-							Livré avec Metalivraison
+							Livrer avec metalivraison
 						</Link>
 					</div>
 				</div>
@@ -219,7 +221,7 @@ const MoneyTransfer = () => {
 			<div className="container">
 				<div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
 					<div className="flex flex-col items-start justify-center gap-6">
-						<h2 className="text-6xl font-extrabold tracking-tight text-primary">
+						<h2 className="text-5xl font-extrabold tracking-tight md:text-6xl text-primary">
 							Retour des fonds chaque 48 hour
 						</h2>
 						<p className="text-foreground/75">
@@ -227,7 +229,7 @@ const MoneyTransfer = () => {
 							moins.
 						</p>
 						<Link href="/" className={cn(buttonVariants({}))}>
-							Livré avec metalivraison
+							Livrer avec metalivraison
 						</Link>
 					</div>
 					<div className="grid__ place-items-center">
@@ -282,7 +284,7 @@ const WhyUs = () => {
 		<section id="why-us" className="py-24 bg-gray-100">
 			<div className="container">
 				<div className="space-y-3 text-center">
-					<h2 className="text-6xl font-extrabold tracking-tight text-primary">
+					<h2 className="text-5xl font-extrabold tracking-tight md:text-6xl text-primary">
 						Pourquoi metalivraison ?
 					</h2>
 				</div>
@@ -292,7 +294,7 @@ const WhyUs = () => {
 							<li
 								key={index}
 								className={cn(
-									"flex items-start gap-4 bg-white sm:p-6 xl:p-8 rounded-2xl",
+									"flex items-start gap-4 bg-white p-4 sm:p-6 xl:p-8 rounded-2xl",
 									"border border-gray-200"
 								)}
 							>
@@ -317,11 +319,31 @@ const WhyUs = () => {
 };
 
 const Contact = () => {
+	const ContactDetails = [
+		{
+			title: "Support",
+			description: "Metalivraison support 24/7",
+			icon: <Icons.headphones className="w-8 h-8" />,
+			content: "07 08 20 21 21",
+		},
+		{
+			title: "Adresse",
+			description: "Trouvez-nous",
+			icon: <Icons.mapPin className="w-8 h-8" />,
+			content: "N°102 LOT A DHER EL MEHREZ FES",
+		},
+		{
+			title: "Rencontre nous",
+			description: "Heures disponibles pour se réunir",
+			icon: <Icons.clock3 className="w-8 h-8" />,
+			content: "9:00 AM ⸺ 8:00 PM",
+		},
+	];
 	return (
 		<section id="contact" className="pt-24">
 			<div className="container">
 				<div className="space-y-3 text-center">
-					<h2 className="text-6xl font-extrabold tracking-tight text-primary">
+					<h2 className="text-5xl font-extrabold tracking-tight md:text-6xl text-primary">
 						Besoin d&apos;aide 24/7
 					</h2>
 					<p className="text-foreground/75">
@@ -345,7 +367,7 @@ const Contact = () => {
 			<div className="py-16 mt-16 bg-gray-100">
 				<div className="container">
 					<ul className="grid gap-6 grid-col-1 sm:grid-cols-2 md:grid-cols-3 md:gap-8">
-						<li className="p-6 lg:p-8 rounded-2xl border border-gray-200 bg-white flex flex-col gap-1.5 text-center">
+						{/* <li className="p-6 lg:p-8 rounded-2xl border border-gray-200 bg-white flex flex-col gap-1.5 text-center">
 							<span className="grid p-3 mx-auto text-white rounded-full shadow-md shadow-primary/40 place-items-center bg-primary">
 								<Icons.headphones className="w-8 h-8" />
 							</span>
@@ -363,21 +385,43 @@ const Contact = () => {
 							<h3 className="pt-3 text-xl font-semibold text-dark/90">
 								Adresse
 							</h3>
-							<p className="text-foreground/75">
-								Trouvez où nous sommes
-							</p>
-						</li>
-						<li className="p-6 lg:p-8 rounded-2xl border border-gray-200 bg-white flex flex-col gap-1.5 text-center">
-							<span className="grid p-3 mx-auto text-white rounded-full shadow-md shadow-primary/40 place-items-center bg-primary">
-								<Icons.clock3 className="w-8 h-8" />
-							</span>
-							<h3 className="pt-3 text-xl font-semibold text-dark/90">
-								Rencontre nous
-							</h3>
-							<p className="text-foreground/75">
-								Heures disponibles pour se réunir
-							</p>
-						</li>
+							<p className="text-foreground/75">Trouvez-nous</p>
+						</li> */}
+						{ContactDetails?.map((item, index) => (
+							<li
+								key={index}
+								className="relative group cursor-pointer p-6 lg:p-8 rounded-2xl border border-gray-200 bg-white flex flex-col gap-1.5 text-center"
+							>
+								<span className="grid p-3 mx-auto text-white rounded-full shadow-md shadow-primary/40 place-items-center bg-primary">
+									{item.icon}
+								</span>
+								<h3 className="pt-3 text-xl font-semibold text-dark/90">
+									{item?.title}
+								</h3>
+								<p className="text-foreground/75">
+									{item?.description}
+								</p>
+								<span
+									className={cn(
+										"absolute w-24 h-1.5 -translate-x-1/2 rounded-lg bottom-1.5 left-1/2 bg-primary transition-[width,height,bottom] origin-center",
+										"group-hover:h-full group-hover:w-full group-hover:bottom-0"
+									)}
+								/>
+								<div
+									className={cn(
+										"absolute inset-0 text-white grid place-items-center text-center text-lg font-medium opacity-0 -z-0 translate-y-3 transition duration-300",
+										"group-hover:opacity-100 group-hover:translate-y-0"
+									)}
+								>
+									<div className="space-y-3">
+										<span className="grid p-3 mx-auto bg-white rounded-full shadow-md w-max text-primary shadow-primary/40 place-items-center">
+											{item.icon}
+										</span>
+										<p>{item.content}</p>
+									</div>
+								</div>
+							</li>
+						))}
 					</ul>
 				</div>
 			</div>
