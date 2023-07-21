@@ -11,6 +11,15 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
 	title: "Metalivraison",
 	description: "On—time Satisfaction",
+	themeColor: [
+		{ media: "(prefers-color-scheme: light)", color: "white" },
+		{ media: "(prefers-color-scheme: dark)", color: "black" },
+	],
+	icons: {
+		icon: "/favicon.ico",
+		shortcut: "/icon.png",
+		apple: "/apple-icon.png",
+	},
 };
 
 export default function RootLayout({
