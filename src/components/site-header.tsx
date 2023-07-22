@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,7 +13,7 @@ const Header = () => {
 	const menuItems: MenuItem[] = [
 		{ title: "Suivi", url: "/#tracking" },
 		{ title: "Services", url: "/#services" },
-		{ title: "Tarifs", url: "/tarifs" },
+		{ title: "Tarifs", url: "/pricing" },
 		{ title: "Contact", url: "/#contact" },
 	];
 
@@ -75,17 +75,26 @@ const Header = () => {
 
 						{/* CTA Button */}
 						<div className="flex items-center flex-shrink-0 gap-3">
-							<Button className="h-10 px-5">
+							<Link
+								href="/register"
+								className={cn(
+									buttonVariants({}),
+									"h-10 px-5 text-sm"
+								)}
+							>
 								Livrer avec metalivraison
-							</Button>
-							<Button
-								size="icon"
-								className="w-10 h-10"
+							</Link>
+							<Link
+								href="/login"
+								className={cn(
+									buttonVariants({ size: "icon" }),
+									"w-10 h-10 text-sm"
+								)}
 								title="Se connecter"
 							>
 								{/* Se connecter */}
 								<Icons.login className="w-5 h-5" />
-							</Button>
+							</Link>
 						</div>
 					</div>
 				</div>

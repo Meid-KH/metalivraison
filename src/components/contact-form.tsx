@@ -24,11 +24,16 @@ const formSchema = z.object({
 	name: z.string().min(2, {
 		message: "Entrez un nom valide.",
 	}),
-	email: z.string().email().min(2, {
-		message: "Entrez un email valide.",
-	}),
-	message: z.string().email().min(3, {
-		message: "Entrez un email valide.",
+	email: z
+		.string()
+		.email({
+			message: "Entrez un email valide.",
+		})
+		.min(2, {
+			message: "Entrez un email valide.",
+		}),
+	message: z.string().min(3, {
+		message: "Message trop court.",
 	}),
 	phone: z
 		.string()
@@ -36,7 +41,7 @@ const formSchema = z.object({
 			new RegExp(
 				/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
 			),
-			"Invalid Number!"
+			"Entrez un numero de téléphone valide."
 		)
 		.min(10, { message: "Doit être un numero de téléphone valide" })
 		.max(14, { message: "Doit être un numero de téléphone valide" }),
@@ -136,7 +141,7 @@ const ContactForm: React.FC<{
 				</div>
 				<Button
 					type="submit"
-					className="flex-shrink-0 gap-2 xl:col-span-2 w-full max-w-[150px]"
+					className="flex-shrink-0 gap-2 xl:col-span-2"
 				>
 					Envoyer
 				</Button>

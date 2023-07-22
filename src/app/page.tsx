@@ -9,14 +9,14 @@ import Link from "next/link";
 
 export default function Home() {
 	return (
-		<main className="min-h-screen">
+		<>
 			<Hero />
 			<Tracking />
 			<Services />
 			<MoneyTransfer />
 			<WhyUs />
 			<Contact />
-		</main>
+		</>
 	);
 }
 

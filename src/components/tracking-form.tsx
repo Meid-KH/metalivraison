@@ -65,7 +65,8 @@ const TrackingForm = () => {
 					)}
 				/>
 				<Button type="submit" className="flex-shrink-0 gap-2">
-					Submit <Icons.search className="w-6 h-6" />
+					Suivre{" "}
+					<Icons.search className="h-5 w56" strokeWidth={1.5} />
 				</Button>
 			</form>
 		</Form>

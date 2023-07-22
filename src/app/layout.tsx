@@ -6,6 +6,8 @@ import Header from "@/components/site-header";
 import Footer from "@/components/site-footer";
 import ScrollTop from "@/components/site-scrolltop";
 
+import { usePathname } from "next/navigation";
+import SiteLayout from "@/components/site-layout";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -30,9 +32,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<Header />
-				{children}
-				<Footer />
+				<SiteLayout>{children}</SiteLayout>
 				<ScrollTop />
 			</body>
 		</html>
