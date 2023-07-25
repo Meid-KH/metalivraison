@@ -30,13 +30,25 @@ export function middleware(request: NextRequest) {
 	// // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
 	// // If you have one
 	// if (
-	//   [
-	//     '/manifest.json',
-	//     '/favicon.ico',
-	//     // Your other files in `public`
-	//   ].includes(pathname)
+	// 	[
+	// 		"/manifest.json",
+	// 		"/favicon.ico",
+	// 		"/img/lang/fr.png",
+	// 		// Your other files in `public`
+	// 	].includes(pathname)
 	// )
-	//   return
+	// 	return;
+
+	const excludedFiles = [
+		// Add other file paths in `public` here if needed
+		"/manifest.json",
+		"/favicon.ico",
+		"/img(/.*)?",
+	];
+	// Exclude all files inside the img folder and its subdirectories
+	if (excludedFiles.some((path) => pathname.match(new RegExp(path)))) {
+		return;
+	}
 
 	// Check if there is any supported locale in the pathname
 	const pathnameIsMissingLocale = i18n.locales.every(

@@ -39,7 +39,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang={params.lang} dir={params.lang === "ar" ? "rtl" : "ltr"}>
-			<body className={cn(inter.className)}>
+			<body className={inter.className}>
 				<SiteLayout>{children}</SiteLayout>
 				<ScrollTop />
 			</body>
