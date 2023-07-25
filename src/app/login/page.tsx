@@ -63,7 +63,17 @@ const LoginPage: React.FC = () => {
 	};
 
 	return (
-		<main className="">
+		<main className="relative">
+			<Link
+				href="/"
+				className={cn(
+					buttonVariants({ size: "icon", variant: "outline" }),
+					"absolute z-10 grid w-20 h-20 top-6 right-6 place-items-center bg-white",
+					"transition group hover:text-white hover:bg-dark hover:scale-90 hover:drop-shadow"
+				)}
+			>
+				<Icons.close className="group-hover:scale-125" />
+			</Link>
 			<div className="grid min-h-screen grid-cols-2">
 				{/* Column 1: Illustration  */}
 				<div className="grid p-6 place-items-center">
@@ -154,12 +164,11 @@ const LoginPage: React.FC = () => {
 								<div className="flex justify-between gap-4 lg:col-span-2">
 									<Link
 										href="/"
-										type="submit"
 										className={cn(
 											buttonVariants({
 												variant: "outline",
 											}),
-											"h-14 flex gap-1 text-dark/70 items-center"
+											"flex gap-1 text-dark/70 items-center"
 										)}
 									>
 										<Icons.arrowLeft
@@ -170,7 +179,7 @@ const LoginPage: React.FC = () => {
 									</Link>
 									<Button
 										type="submit"
-										className="gap-2 xl:col-span-2 w-full max-w-[200px] h-14 ml-auto flex"
+										className=""
 										disabled={isLoading}
 									>
 										{isLoading
@@ -192,7 +201,7 @@ const LoginPage: React.FC = () => {
 					</Form>
 					{/* footer */}
 					<footer className="absolute inset-x-0 bottom-0 py-4">
-						<p className="text-xs tracking-wider text-center text-gray-500/90 uppercase">
+						<p className="text-xs tracking-wider text-center uppercase text-gray-500/90">
 							Metalivraison © 2023 — Tous droits résérvés
 						</p>
 					</footer>

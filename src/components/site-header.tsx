@@ -3,35 +3,55 @@ import { Icons } from "@/components/icons";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
+// import useTranslation from "next-translate";
+
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface MenuItem {
 	title: string;
-	url: string;
+	path: string;
 }
 
 const Header = () => {
 	const menuItems: MenuItem[] = [
-		{ title: "Suivi", url: "/#tracking" },
-		{ title: "Services", url: "/#services" },
-		{ title: "Tarifs", url: "/pricing" },
-		{ title: "Contact", url: "/#contact" },
+		{ title: "Suivi", path: "/#tracking" },
+		{ title: "Services", path: "/#services" },
+		{ title: "Tarifs", path: "/pricing" },
+		{ title: "Contact", path: "/#contact" },
 	];
+	const pathName = usePathname();
+	// const { t } = useTranslation();
 
 	return (
 		<>
-			<nav className="p-1 text-xs font-medium bg-white">
+			<nav className="px-4 py-2 text-xs font-medium bg-white">
 				<div className="container">
 					<div className="flex items-center justify-between gap-6">
 						<span className="flex items-center gap-1.5">
-							<i className="grid w-6 h-6 rounded-full place-items-center bg-primary text-primary-foreground">
-								<Icons.arrowRight className="w-4 h-4" />
+							<i className="grid w-5 h-5 rounded-full place-items-center bg-primary text-primary-foreground">
+								<Icons.arrowRight className="w-3.5 h-3.5" />
 							</i>
-							Livrer avec metalivraison
+							Livrer avec metalivraison {/* {t("welcome")} */}
 						</span>
-						<Button
-							variant="ghost"
-							size="sm"
-							className="flex items-center gap-2 px-3 py-1 -mr-3 font-semibold rounded-full"
+
+						<Link
+							href="/"
+							locale="ar"
+							className={cn(
+								buttonVariants({
+									size: "sm",
+									variant: "ghost",
+								}),
+								"flex items-center h-8 gap-2 px-1 py-1 -mr-3 font-semibold rounded-full"
+							)}
 						>
 							العربية
 							<span className="w-6 h-6 overflow-hidden rounded-full">
@@ -42,10 +62,30 @@ const Header = () => {
 									alt="Arabe"
 								/>
 							</span>
-						</Button>
+						</Link>
+						{/* <DropdownMenu>
+							<DropdownMenuTrigger asChild>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent
+								align="end"
+								className="border-dark/20 text-foreground/80"
+							>
+								<DropdownMenuLabel>Actions</DropdownMenuLabel>
+								<DropdownMenuItem
+									onClick={() =>
+										navigator.clipboard.writeText(
+											"text copied!"
+										)
+									}
+								>
+									Français
+								</DropdownMenuItem>
+							</DropdownMenuContent>
+						</DropdownMenu> */}
 					</div>
 				</div>
 			</nav>
+
 			<header className="sticky top-0 px-4 py-4 bg-gray-200/40 backdrop-blur-xl">
 				<div className="container px-0">
 					<div className="flex items-center justify-between gap-6">
@@ -56,15 +96,17 @@ const Header = () => {
 						</Link>
 
 						{/* Menu */}
-						<ul className="items-center hidden text-sm md:flex">
+						<ul className="items-center hidden gap-1 text-sm md:flex">
 							{menuItems.map((item, index) => (
 								<li key={index}>
 									<a
-										href={item.url}
+										href={item.path}
 										className={cn(
-											"font-medium text-gray-700 block px-5 py-2.5 rounded-full overflow-hidden",
+											"font-medium text-gray-700 block px-4 py-2.5 rounded-full overflow-hidden",
 											"relative before:absolute before:inset-0 before:bg-dark before:rounded-full before:-z-10 before:opacity-0 before:scale-50 before:origin-center before:transition-all",
-											"hover:text-white hover:before:opacity-100 hover:before:scale-100"
+											"hover:text-white hover:before:opacity-100 hover:before:scale-100",
+											pathName === item.path &&
+												"text-white before:opacity-100 before:scale-100"
 										)}
 									>
 										{item.title}

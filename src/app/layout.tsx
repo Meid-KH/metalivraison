@@ -9,6 +9,8 @@ import ScrollTop from "@/components/site-scrolltop";
 import { usePathname } from "next/navigation";
 import SiteLayout from "@/components/site-layout";
 const inter = Inter({ subsets: ["latin"] });
+import useTranslation from "next-translate";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
 	title: "Metalivraison",
@@ -29,9 +31,14 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
+	// const { t, lang } = useTranslation();
+
 	return (
-		<html lang="en">
-			<body className={inter.className}>
+		<html
+		// lang={lang === "ar" ? "ar" : "fr"}
+		// dir={lang === "ar" ? "rtl" : "ltr"}
+		>
+			<body className={cn(inter.className)}>
 				<SiteLayout>{children}</SiteLayout>
 				<ScrollTop />
 			</body>
