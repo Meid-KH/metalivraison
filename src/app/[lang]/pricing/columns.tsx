@@ -29,7 +29,7 @@ export const columns: ColumnDef<Payment>[] = [
 		header: ({ column }) => {
 			return (
 				<Button
-					variant="ghost"
+					variant={"ghost"}
 					size={"sm"}
 					className="h-8 py-1 -ml-3 hover:bg-gray-200"
 					onClick={() =>

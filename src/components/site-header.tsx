@@ -3,8 +3,7 @@ import { Icons } from "@/components/icons";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
-// import useTranslation from "next-translate";
+import { usePathname, useParams } from "next/navigation";
 
 import {
 	DropdownMenu,
@@ -14,6 +13,7 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import LocaleSwitcher from "./locale-switcher";
 
 interface MenuItem {
 	title: string;
@@ -21,18 +21,21 @@ interface MenuItem {
 }
 
 const Header = () => {
+	const pathName = usePathname();
+	const { lang } = useParams();
+
 	const menuItems: MenuItem[] = [
 		{ title: "Suivi", path: "/#tracking" },
 		{ title: "Services", path: "/#services" },
 		{ title: "Tarifs", path: "/pricing" },
 		{ title: "Contact", path: "/#contact" },
 	];
-	const pathName = usePathname();
-	// const { t } = useTranslation();
+	console.log(lang);
+	console.log(pathName);
 
 	return (
 		<>
-			<nav className="px-4 py-2 text-xs font-medium bg-white">
+			<nav className="py-2 text-xs font-medium bg-white">
 				<div className="container">
 					<div className="flex items-center justify-between gap-6">
 						<span className="flex items-center gap-1.5">
@@ -42,55 +45,16 @@ const Header = () => {
 							Livrer avec metalivraison {/* {t("welcome")} */}
 						</span>
 
-						<Link
-							href="/"
-							locale="ar"
-							className={cn(
-								buttonVariants({
-									size: "sm",
-									variant: "ghost",
-								}),
-								"flex items-center h-8 gap-2 px-1 py-1 -mr-3 font-semibold rounded-full"
-							)}
-						>
-							العربية
-							<span className="w-6 h-6 overflow-hidden rounded-full">
-								<Image
-									width={50}
-									height={50}
-									src="/img/lang/ar.png"
-									alt="Arabe"
-								/>
-							</span>
-						</Link>
-						{/* <DropdownMenu>
-							<DropdownMenuTrigger asChild>
-							</DropdownMenuTrigger>
-							<DropdownMenuContent
-								align="end"
-								className="border-dark/20 text-foreground/80"
-							>
-								<DropdownMenuLabel>Actions</DropdownMenuLabel>
-								<DropdownMenuItem
-									onClick={() =>
-										navigator.clipboard.writeText(
-											"text copied!"
-										)
-									}
-								>
-									Français
-								</DropdownMenuItem>
-							</DropdownMenuContent>
-						</DropdownMenu> */}
+						<LocaleSwitcher />
 					</div>
 				</div>
 			</nav>
 
-			<header className="sticky top-0 px-4 py-4 bg-gray-200/40 backdrop-blur-xl">
-				<div className="container px-0">
+			<header className="sticky top-0 z-20 py-4 bg-gray-200/40 backdrop-blur-xl">
+				<div className="container">
 					<div className="flex items-center justify-between gap-6">
 						{/* Logo */}
-						<Link href="/" className="block md:w-56">
+						<Link href={`/${lang}`} className="block md:w-56">
 							<Icons.logo className="hidden md:block" />
 							<Icons.logoSmall className="block w-12 h-12 md:hidden" />
 						</Link>
@@ -99,8 +63,9 @@ const Header = () => {
 						<ul className="items-center hidden gap-1 text-sm md:flex">
 							{menuItems.map((item, index) => (
 								<li key={index}>
-									<a
-										href={item.path}
+									<Link
+										href={`/${lang}${item.path}`}
+										locale={lang as string}
 										className={cn(
 											"font-medium text-gray-700 block px-4 py-2.5 rounded-full overflow-hidden",
 											"relative before:absolute before:inset-0 before:bg-dark before:rounded-full before:-z-10 before:opacity-0 before:scale-50 before:origin-center before:transition-all",
@@ -110,7 +75,7 @@ const Header = () => {
 										)}
 									>
 										{item.title}
-									</a>
+									</Link>
 								</li>
 							))}
 						</ul>
@@ -118,16 +83,18 @@ const Header = () => {
 						{/* CTA Button */}
 						<div className="flex items-center flex-shrink-0 gap-3">
 							<Link
-								href="/register"
+								href={`/${lang}/register`}
 								className={cn(
 									buttonVariants({}),
 									"h-10 px-5 text-sm"
 								)}
+								locale={lang as string}
 							>
 								Livrer avec metalivraison
 							</Link>
 							<Link
-								href="/login"
+								href={`/${lang}/login`}
+								locale={lang as string}
 								className={cn(
 									buttonVariants({ size: "icon" }),
 									"w-10 h-10 text-sm"

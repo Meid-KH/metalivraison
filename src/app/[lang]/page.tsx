@@ -3,13 +3,24 @@ import { Icons } from "@/components/icons";
 import TrackingForm from "@/components/tracking-form";
 import { Button, buttonVariants } from "@/components/ui/button";
 
+import { getDictionary } from "../../get-dictionary";
+import { Locale } from "../../i18n-config";
+
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home({
+	params: { lang },
+}: {
+	params: { lang: Locale };
+}) {
+	const dictionary = await getDictionary(lang);
+
 	return (
 		<>
+			{/* <p>Current locale: {lang}</p>
+			<p>{dictionary["server-component"].welcome}</p> */}
 			<Hero />
 			<Tracking />
 			<Services />
