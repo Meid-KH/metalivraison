@@ -1,5 +1,113 @@
 {
-	"server-component": {
-		"welcome": "Bienvenue!"
+	"index": {
+		"hero": {
+			"title": "On — time Satisfaction!",
+			"paragraph": "Metalivraison est un service de livraison proposé par la société Meta Livraison Express S.A.R.L spécialisé dans les solutions logistiques. Metalivraison s’adapte aux évolutions de livraison au Maroc."
+		},
+		"tracking": {
+			"title": "Suivi de commande",
+			"paragraph": "Vous pouvez suivre votre commande en saisissant votre numéro de commande",
+			"Package collected": "Colis collecté",
+			"Package being processed": "Colis en cours de traitement",
+			"Package on delivery": "Colis en cours de livraison",
+			"Package delivered": "Colis livré"
+		},
+		"services": {
+			"title": "Découvrez nos service",
+			"paragraph": "Découvrez nos services : Livraison Express rapide et fiable à votre domicile partout au Maroc. Service de Ramassage pratique pour un seul colis. Stockage sécurisé. Emballage expert pour les liquides et objets fragiles.",
+			"packaging": {
+				"title": "Emballage",
+				"description": "Nous pouvons emballer les produits liquides et fagiles."
+			},
+			"storage": {
+				"title": "Stockage",
+				"description": "Le stockage est gratuit et se fait dans les meilleures conditions."
+			},
+			"pickup": {
+				"title": "Ramassage",
+				"description": "Ramassage a partir d'un seul colis"
+			},
+			"delivery": {
+				"title": "Livraison Express",
+				"description": "Nous assurons la livraison à domicile par tout au Maroc"
+			}
+		},
+		"money-transfer": {
+			"title": "Retour des fonds chaque 48 heures",
+			"paragraph": "Virement bancaire de fonds chaque 48 heures ou moins."
+		},
+		"why-us": {
+			"title": "Pourquoi metalivraison ?",
+			"paragraph": "",
+			"cod": {
+				"title": "Cash on delivery (COD)",
+				"description": "COD est approprié pour gagner la confiance des clients et maintenir la réputation de la marque, en plus de réduire les risques financiers liés au règlement des paiements électroniques"
+			},
+			"tracking": {
+				"title": "Suivez vos commandes en temps réel",
+				"description": "Suivez vos commandes en temps réel où que vous soyez et à n'importe quel moment"
+			},
+			"api": {
+				"title": "Connecteurs & API",
+				"description": "Vous pouvez automatiquement envoyer vos colis en toute simplicité et confort. Des connecteurs à votre disposition pour toutes les plateformes Ecommerce"
+			},
+			"callcentre": {
+				"title": "Centre relation client",
+				"description": "Nous vous assurons un support technique tout au long de la semaine pour vous permettre de développer votre projet"
+			}
+		},
+		"contact": {
+			"title": "Besoin d'aide 24/7",
+			"paragraph": "Renseignez vos informations et nous prendrons contact avec vous.",
+			"support": {
+				"title": "Support",
+				"description": "Metalivraison support 24/7",
+				"content": "07 08 20 21 21"
+			},
+			"address": {
+				"title": "Adresse",
+				"description": "Trouvez-nous",
+				"content": "N°102 LOT A DHER EL MEHREZ FES"
+			},
+			"time": {
+				"title": "Rencontrez-nous",
+				"description": "Heures disponibles pour se réunir",
+				"content": "9:00h ⸺ 20:00h"
+			}
+		}
+	},
+	"forms": {
+		"Full name": "Nom complet",
+		"Email": "Email",
+		"Phone": "Téléphone",
+		"Your message": "Votre message",
+		"Password": "Mot de passe",
+		"Send": "Envoyer",
+		"Submit": "Soumettre"
+	},
+	"menu": {
+		"Tracking": "Suivi",
+		"Services": "Services",
+		"Pricing": "Traif",
+		"Contact": "Contact"
+	},
+	"global": {
+		"Metalivraison": "Metalivraison",
+		"Deliver with Metalivraison": "Livrer avec metalivraison",
+		"Customer account": "Espace client",
+		"Track": "Suivre",
+		"Back": "Retour",
+		"Register": "S'inscrire",
+		"Log in": "Se connecter",
+		"Already registered?": "Vous avez déjà un compte ?",
+		"Not registered yet?": "Vous n'avez encore un compte ?",
+		"Sign in": "Connectez-vous",
+		"Sign up": "Inscrivez-vous",
+		"copyright": "Tous droits résérvés",
+		"footer-slogan": "Avec la volonté de notre équipe, votre ambition sera réalisée",
+		"Contact": "Contact",
+		"Tracking delivery": "Suivi de Livraison",
+		"Metalivraison pricing": "Metalivraison tarifs",
+		"tracking number": "N° de suivi"
 	}
 }

@@ -49,7 +49,8 @@ const formSchema = z.object({
 
 const ContactForm: React.FC<{
 	className: string;
-}> = ({ className }) => {
+	dictionary?: { [key: string]: string };
+}> = ({ className, dictionary }) => {
 	// 1. Define your form.
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -86,7 +87,9 @@ const ContactForm: React.FC<{
 								<FormItem className="w-full">
 									<FormControl>
 										<Input
-											placeholder="Nom complet"
+											placeholder={
+												dictionary?.["Full name"]
+											}
 											{...field}
 										/>
 									</FormControl>
@@ -100,7 +103,10 @@ const ContactForm: React.FC<{
 							render={({ field }) => (
 								<FormItem className="w-full">
 									<FormControl>
-										<Input placeholder="Email" {...field} />
+										<Input
+											placeholder={dictionary?.["Email"]}
+											{...field}
+										/>
 									</FormControl>
 									<FormMessage className="ml-3 text-xs" />
 								</FormItem>
@@ -113,7 +119,7 @@ const ContactForm: React.FC<{
 								<FormItem className="w-full">
 									<FormControl>
 										<Input
-											placeholder="Téléphone"
+											placeholder={dictionary?.["Phone"]}
 											{...field}
 										/>
 									</FormControl>
@@ -130,7 +136,9 @@ const ContactForm: React.FC<{
 								<FormControl>
 									<Textarea
 										className="h-full"
-										placeholder="Votre message"
+										placeholder={
+											dictionary?.["Your message"]
+										}
 										{...field}
 									/>
 								</FormControl>
@@ -143,7 +151,7 @@ const ContactForm: React.FC<{
 					type="submit"
 					className="flex-shrink-0 gap-2 xl:col-span-2"
 				>
-					Envoyer
+					{dictionary?.["Send"]}
 				</Button>
 			</form>
 		</Form>

@@ -2,19 +2,29 @@ import Link from "next/link";
 import React from "react";
 import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
+import { useParams } from "next/navigation";
 
 const menuItems = [
 	{
-		path: "/#tracking",
-		label: "Suivi de Livraison",
+		path: `/#tracking`,
+		label: {
+			ar: "تتبع طلبيتك ",
+			fr: "Suivi de Livraison",
+		},
 	},
 	{
-		path: "/tarifs",
-		label: "Metalivraison tarifs",
+		path: `/pricing`,
+		label: {
+			ar: "أثمنة ميتاليفريزون",
+			fr: "Metalivraison tarifs",
+		},
 	},
 	{
-		path: "/#contact",
-		label: "Contact",
+		path: `/#contact`,
+		label: {
+			ar: "تواصل معنا",
+			fr: "Contact",
+		},
 	},
 ];
 const socialLinks = [
@@ -41,16 +51,24 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+	const { lang } = useParams();
+
 	return (
 		<footer className="bg-black text-background/80">
 			<div className="container">
 				<div className="grid grid-cols-2 gap-8 py-16 md:grid-cols-3">
 					<div className="col-span-2 space-y-4">
 						{/* Logo */}
-						<Icons.logoDark className="w-64" />
+						{lang === "ar" ? (
+							<Icons.logoDarkRtl className="w-64" />
+						) : (
+							<Icons.logoDark className="w-64" />
+						)}
 						<p className="text-sm leading-relaxed text-muted">
-							Avec la volonté de notre équipe, <br className="" />{" "}
-							votre ambition sera réalisée
+							{lang === "fr" &&
+								"Avec la volonté de notre équipe, votre ambition sera réalisée"}
+							{lang === "ar" &&
+								"بإرادة فريق ميتاليفريزون أحلامكم ستصبح حقيقة"}
 						</p>
 					</div>
 					<ul className="flex flex-col items-start gap-3.5 text-sm">
@@ -63,7 +81,8 @@ export default function Footer() {
 										"transition before:transition-all hover:text-white hover:before:w-full"
 									)}
 								>
-									{menuItem.label}
+									{lang === "fr" && menuItem.label.fr}
+									{lang === "ar" && menuItem.label.ar}
 								</Link>
 							</li>
 						))}
@@ -90,7 +109,10 @@ export default function Footer() {
 			<div className="py-6 border-t border-gray-800">
 				<div className="container">
 					<p className="text-xs tracking-wider text-center text-gray-400 uppercase">
-						Metalivraison © 2023 — Tous droits résérvés
+						{lang === "fr" &&
+							`Metalivraison © ${new Date().getFullYear()} — Tous droits résérvés`}
+						{lang === "ar" &&
+							`ميتاليفريزون © ${new Date().getFullYear()} — جميع الحقوق محفوضة`}
 					</p>
 				</div>
 			</div>

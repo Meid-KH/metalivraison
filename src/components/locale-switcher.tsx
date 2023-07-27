@@ -31,7 +31,15 @@ export default function LocaleSwitcher() {
 								"flex items-center h-8 gap-2 px-1 py-1 font-semibold rounded-full"
 							)}
 						>
-							{/* {locale !== "ar" && locale !== "fr" && locale} */}
+							{locale !== "ar" && locale !== "fr" && locale}
+							{locale === "ar" && (
+								<span className="text-xs font-rtl">
+									العربية
+								</span>
+							)}
+							{locale === "fr" && (
+								<span className="text-xs">Français</span>
+							)}
 							<span className="w-6 h-6 overflow-hidden rounded-full">
 								<Image
 									width={50}

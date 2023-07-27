@@ -66,9 +66,6 @@
 
 		--ring: 217.2 32.6% 17.5%;
 	} */
-}
-
-@layer base {
 	* {
 		@apply border-border;
 	}
@@ -76,10 +73,10 @@
 		@apply scroll-smooth;
 	}
 	body {
-		@apply bg-background text-foreground/90;
+		@apply font-body rtl:font-rtl bg-background text-foreground/90;
 	}
 	p {
-		@apply leading-relaxed;
+		@apply leading-relaxed rtl:leading-7;
 	}
 	h1,
 	h2,
@@ -90,3 +87,11 @@
 		@apply text-dark;
 	}
 }
+/* @layer components {
+} */
+
+/* @media (apple-system-font: blinkmacsystemfont) {
+	body {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	}
+} */

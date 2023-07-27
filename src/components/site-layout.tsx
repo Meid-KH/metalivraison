@@ -4,7 +4,13 @@ import { useParams, usePathname } from "next/navigation";
 import Header from "./site-header";
 import Footer from "./site-footer";
 
-function SiteLayout({ children }: { children: React.ReactNode }) {
+function SiteLayout({
+	children,
+	dictionary,
+}: {
+	children: React.ReactNode;
+	dictionary?: any;
+}) {
 	const path = usePathname();
 	const { lang } = useParams();
 

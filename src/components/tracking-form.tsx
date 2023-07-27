@@ -24,7 +24,13 @@ const formSchema = z.object({
 	}),
 });
 
-const TrackingForm = () => {
+const TrackingForm = ({
+	dictionary,
+}: {
+	dictionary?: { [key: string]: string };
+}) => {
+	// console.log(dictionary);
+
 	// 1. Define your form.
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -56,7 +62,7 @@ const TrackingForm = () => {
 							</FormLabel> */}
 							<FormControl>
 								<Input
-									placeholder="Votre N° de suivi"
+									placeholder={dictionary?.placeholder}
 									{...field}
 								/>
 							</FormControl>
@@ -65,7 +71,7 @@ const TrackingForm = () => {
 					)}
 				/>
 				<Button type="submit" className="flex-shrink-0 gap-2">
-					Suivre{" "}
+					{dictionary?.cta}
 					<Icons.search className="h-5 w56" strokeWidth={1.5} />
 				</Button>
 			</form>

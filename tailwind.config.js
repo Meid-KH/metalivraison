@@ -15,6 +15,10 @@ module.exports = {
 				"2xl": "1400px",
 			},
 		},
+		fontFamily: {
+			body: "var(--body-font)",
+			rtl: "var(--rtl-font)",
+		},
 		extend: {
 			colors: {
 				dark: "#1B1C20",
@@ -55,6 +59,9 @@ module.exports = {
 			container: {
 				center: true,
 				padding: "1rem",
+				screens: {
+					"2xl": "1280px",
+				},
 			},
 			borderRadius: {
 				lg: "var(--radius)",

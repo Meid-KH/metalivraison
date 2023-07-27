@@ -9,43 +9,46 @@ import { Locale } from "../../i18n-config";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import Heading from "@/components/ui/heading";
 
 export default async function Home({
 	params: { lang },
 }: {
 	params: { lang: Locale };
 }) {
-	const dictionary = await getDictionary(lang);
-
 	return (
 		<>
-			{/* <p>Current locale: {lang}</p>
-			<p>{dictionary["server-component"].welcome}</p> */}
-			<Hero />
-			<Tracking />
-			<Services />
-			<MoneyTransfer />
-			<WhyUs />
-			<Contact />
+			{/* <p>Current locale: {lang}</p> */}
+			{/* <p>{dict.index?.hero?.title}</p> */}
+			<Hero lang={lang} />
+			<Tracking lang={lang} />
+			<Services lang={lang} />
+			<MoneyTransfer lang={lang} />
+			<WhyUs lang={lang} />
+			<Contact lang={lang} />
 		</>
 	);
 }
 
-const Hero = () => {
+const Hero = async ({ lang }: { lang: Locale }) => {
+	const dict = await getDictionary(lang);
+
 	return (
-		<section className="py-24">
+		<section id="hero" className="py-24">
 			<div className="container">
 				<div className="grid items-center grid-cols-1 gap-8 md:grid-cols-2">
 					<div className="space-y-6">
-						<h1 className="text-6xl font-black tracking-tight lg:text-8xl text-primary">
-							On — time Satisfaction
-						</h1>
+						<Heading variant="h1">
+							{/* On — time Satisfaction */}
+							{dict.index?.hero?.title}
+						</Heading>
 						<p>
-							Metalivraison est un service de livraison proposé
+							{/* Metalivraison est un service de livraison proposé
 							par la société Meta Livraison Express S.A.R.L
 							spécialisé dans les solutions logistiques.
 							Metalivraison s’adapte aux évolutions de livraison
-							au Maroc.
+							au Maroc. */}
+							{dict.index?.hero?.paragraph}
 						</p>
 						<div className="flex flex-wrap gap-4 sm:flex-nowrap md:flex-wrap lg:flex-nowrap">
 							<Link
@@ -55,7 +58,7 @@ const Hero = () => {
 									"w-full sm:w-max"
 								)}
 							>
-								Livrer avec metalivraison
+								{dict.global?.["Deliver with Metalivraison"]}
 							</Link>
 							<Link
 								href="/"
@@ -64,7 +67,7 @@ const Hero = () => {
 									"w-full sm:w-max"
 								)}
 							>
-								Espace client
+								{dict.global?.["Customer account"]}
 							</Link>
 						</div>
 					</div>
@@ -83,48 +86,44 @@ const Hero = () => {
 	);
 };
 
-const Tracking = () => {
+const Tracking = async ({ lang }: { lang: Locale }) => {
+	const dict = await getDictionary(lang);
+	const formDict = {
+		cta: dict?.global?.Track,
+		placeholder: dict?.global?.["tracking number"],
+	};
 	return (
 		<section id="tracking" className="py-24 bg-gray-100">
 			<div className="container">
-				<div className="space-y-2 text-center">
-					<h2 className="text-5xl font-extrabold tracking-tight md:text-6xl text-primary">
-						Suivi de commande
-					</h2>
+				<div className="space-y-6 text-center">
+					<Heading>{dict.index?.tracking?.title}</Heading>
 					<p className="text-dark/70">
-						Vous pouvez suivre votre commande en saisissant votre
-						numéro de commande
+						{dict.index?.tracking?.paragraph}
+						{/* Vous pouvez suivre votre commande en saisissant votre
+						numéro de commande */}
 					</p>
 				</div>
-				<TrackingForm />
+				<TrackingForm dictionary={formDict} />
 				<ul className="flex flex-wrap items-start justify-between gap-4 mt-8 lg:justify-center md:mt-12 lg:mt-24 lg:gap-10 xl:gap-32">
 					{/* {[1, 2, 3, 4].map((item, index) => (
               ))} */}
 					<li className="flex flex-col gap-1.5 items-center text-center">
-						<Icons.truck
-							// strokeWidth={1}
-							className="w-16 h-16 md:w-20 md:h-20 text-primary"
-						/>
+						<Icons.truck className="w-16 h-16 md:w-20 md:h-20 text-primary rtl:-scale-x-100" />
 						<span className="text-sm font-medium lfirst-letter:eading-snug md:text-base">
-							Colis collecté
+							{/* Colis collecté */}
+							{dict.index?.tracking?.["Package collected"]}
 						</span>
 					</li>
 					<li className="flex flex-col gap-1.5 items-center text-center">
-						<Icons.cogTriple
-							// strokeWidth={1}
-							className="w-16 h-16 md:w-20 md:h-20 text-primary"
-						/>
+						<Icons.cogTriple className="w-16 h-16 md:w-20 md:h-20 text-primary" />
 						<span className="text-sm font-medium lfirst-letter:eading-snug md:text-base">
-							Colis en cours de <br className="" /> traitement
+							{dict.index?.tracking?.["Package being processed"]}
 						</span>
 					</li>
 					<li className="flex flex-col gap-1.5 items-center text-center">
-						<Icons.clock
-							// strokeWidth={0.5}
-							className="w-16 h-16 md:w-20 md:h-20 p-3.5 text-primary"
-						/>
+						<Icons.clock className="w-16 h-16 md:w-20 md:h-20 p-3.5 text-primary" />
 						<span className="text-sm font-medium lfirst-letter:eading-snug md:text-base">
-							Colis en cours <br className="" /> de livraison
+							{dict.index?.tracking?.["Package on delivery"]}
 						</span>
 					</li>
 					<li className="flex flex-col gap-1.5 items-center text-center">
@@ -133,7 +132,7 @@ const Tracking = () => {
 							className="w-16 h-16 p-2 md:w-20 md:h-20 text-primary"
 						/>
 						<span className="text-sm font-medium lfirst-letter:eading-snug md:text-base">
-							Colis livré
+							{dict.index?.tracking?.["Package delivered"]}
 						</span>
 					</li>
 				</ul>
@@ -142,7 +141,8 @@ const Tracking = () => {
 	);
 };
 
-const Services = () => {
+const Services = async ({ lang }: { lang: Locale }) => {
+	const dict = await getDictionary(lang);
 	interface Item {
 		icon: React.ReactNode;
 		title: string;
@@ -152,26 +152,23 @@ const Services = () => {
 	const items: Item[] = [
 		{
 			icon: <Icons.box className="w-20 h-20" />,
-			title: "Livraison Express",
-			description:
-				"Nous assurons la livraison à domicile par tout au Maroc",
+			title: dict.index?.services?.delivery?.title,
+			description: dict.index?.services?.delivery?.description,
 		},
 		{
-			icon: <Icons.deliery className="w-20 h-20" />,
-			title: "Ramassage",
-			description: "Ramassage a partir d'un seul colis",
+			icon: <Icons.delivery className="w-20 h-20 rtl:-scale-x-100" />,
+			title: dict.index?.services?.pickup?.title,
+			description: dict.index?.services?.pickup?.description,
 		},
 		{
 			icon: <Icons.warehouse className="w-20 h-20" />,
-			title: "Stockage",
-			description:
-				"Le stockage est gratuit et se fait dans les meilleures conditions.",
+			title: dict.index?.services?.storage?.title,
+			description: dict.index?.services?.storage?.description,
 		},
 		{
 			icon: <Icons.packaging className="w-20 h-20" />,
-			title: "Emballage",
-			description:
-				"Nous pouvons emballer les produits liquides et fagiles.",
+			title: dict.index?.services?.packaging?.title,
+			description: dict.index?.services?.packaging?.description,
 		},
 	];
 
@@ -179,13 +176,15 @@ const Services = () => {
 		<section id="services" className="py-24">
 			<div className="container">
 				<div className="space-y-3 text-center">
-					<h2 className="text-5xl font-extrabold tracking-tight md:text-6xl text-primary">
-						Découvrez nos services
-					</h2>
+					<Heading>
+						{dict.index?.services?.title}
+						{/* Découvrez nos services */}
+					</Heading>
 					<p className="text-dark/70">
-						Lorem ipsum dolor sit amet consectetur adipisicing
+						{dict.index?.services?.paragraph}
+						{/* Lorem ipsum dolor sit amet consectetur adipisicing
 						elitquisquam rerum magnam, quidem. <br className="" />{" "}
-						Natus facilis omnis non nemo officia.
+						Natus facilis omnis non nemo officia. */}
 					</p>
 				</div>
 				<div className="mt-14">
@@ -201,10 +200,10 @@ const Services = () => {
 								<span className="text-primary">
 									{item.icon}
 								</span>
-								<h3 className="text-lg font-medium tracking-wide text-primary">
+								<h3 className="text-lg font-medium tracking-wide text-primary rtl:text-xl rtl:font-semibold">
 									{item.title}
 								</h3>
-								<p className="text-sm text-dark/70">
+								<p className="text-sm text-dark/70 rtl:text-base rtl:leading-7">
 									{item.description}
 								</p>
 							</li>
@@ -217,7 +216,7 @@ const Services = () => {
 								buttonVariants({ variant: "default" })
 							)}
 						>
-							Livrer avec metalivraison
+							{dict.global?.["Deliver with Metalivraison"]}
 						</Link>
 					</div>
 				</div>
@@ -226,27 +225,30 @@ const Services = () => {
 	);
 };
 
-const MoneyTransfer = () => {
+const MoneyTransfer = async ({ lang }: { lang: Locale }) => {
+	const dict = await getDictionary(lang);
+
 	return (
 		<section id="money-transfer" className="pt-12 pb-24">
 			<div className="container">
 				<div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
 					<div className="flex flex-col items-start justify-center gap-6">
-						<h2 className="text-5xl font-extrabold tracking-tight md:text-6xl text-primary">
-							Retour des fonds chaque 48 hour
-						</h2>
+						<Heading>
+							{/* Retour des fonds chaque 48 hour */}
+							{dict.index?.["money-transfer"]?.title}
+						</Heading>
 						<p className="text-foreground/75">
-							Virement bancaire de fonds chaque 48 heures ou
-							moins.
+							{dict.index?.["money-transfer"]?.paragraph}
+							{/* Virement bancaire de fonds chaque 48 heures ou moins.*/}
 						</p>
 						<Link href="/" className={cn(buttonVariants({}))}>
-							Livrer avec metalivraison
+							{dict.global?.["Deliver with Metalivraison"]}
 						</Link>
 					</div>
 					<div className="grid__ place-items-center">
 						<Image
 							className="ml-auto"
-							src="/img/money-transfer-fr.png"
+							src={`/img/money-transfer-${lang}.png`}
 							width={600}
 							height={400}
 							alt="Money transfer"
@@ -258,7 +260,8 @@ const MoneyTransfer = () => {
 	);
 };
 
-const WhyUs = () => {
+const WhyUs = async ({ lang }: { lang: Locale }) => {
+	const dict = await getDictionary(lang);
 	interface Item {
 		icon: React.ReactNode;
 		title: string;
@@ -267,27 +270,23 @@ const WhyUs = () => {
 	const items: Item[] = [
 		{
 			icon: <Icons.cod className="w-20 h-20" />,
-			title: "Cash on delivery (COD)",
-			description:
-				"COD est approprié pour gagner la confiance des clients et maintenir la réputation de la marque, en plus de réduire les risques financiers liés au règlement des paiements électroniques.",
+			title: dict.index?.["why-us"]?.cod?.title,
+			description: dict.index?.["why-us"]?.cod?.description,
 		},
 		{
 			icon: <Icons.location className="w-20 h-20" />,
-			title: "Suivez vos commandes en temps réel",
-			description:
-				"Suivez vos commandes en temps réel où que vous soyez et à n'importe quel moment.",
+			title: dict.index?.["why-us"]?.tracking?.title,
+			description: dict.index?.["why-us"]?.tracking?.description,
 		},
 		{
 			icon: <Icons.api className="w-20 h-20" />,
-			title: "Connecteurs & API",
-			description:
-				"Vous pouvez automatiquement envoyer vos colis en toute simplicité et confort. Des connecteurs à votre disposition pour toutes les plateformes Ecommerce",
+			title: dict.index?.["why-us"]?.api?.title,
+			description: dict.index?.["why-us"]?.api?.description,
 		},
 		{
 			icon: <Icons.callcenter className="w-20 h-20" />,
-			title: "Centre relation client",
-			description:
-				"Nous vous assurons un support technique tout au long de la semaine pour vous permettre de développer votre projet.",
+			title: dict.index?.["why-us"]?.callcentre?.title,
+			description: dict.index?.["why-us"]?.callcentre?.description,
 		},
 	];
 
@@ -295,9 +294,7 @@ const WhyUs = () => {
 		<section id="why-us" className="py-24 bg-gray-100">
 			<div className="container">
 				<div className="space-y-3 text-center">
-					<h2 className="text-5xl font-extrabold tracking-tight md:text-6xl text-primary">
-						Pourquoi metalivraison ?
-					</h2>
+					<Heading>{dict.index?.["why-us"]?.title}</Heading>
 				</div>
 				<div className="mt-14">
 					<ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -313,7 +310,7 @@ const WhyUs = () => {
 									{item.icon}
 								</span>
 								<div className="space-y-1.5">
-									<h3 className="text-lg font-medium tracking-wide text-primary">
+									<h3 className="text-lg font-medium tracking-wide rtl:font-semibold text-primary">
 										{item.title}
 									</h3>
 									<p className="text-sm leading-normal text-dark/70">
@@ -329,37 +326,41 @@ const WhyUs = () => {
 	);
 };
 
-const Contact = () => {
+const Contact = async ({ lang }: { lang: Locale }) => {
+	const dict = await getDictionary(lang);
+
 	const ContactDetails = [
 		{
-			title: "Support",
-			description: "Metalivraison support 24/7",
+			title: dict.index?.contact?.support?.title,
+			description: dict.index?.contact?.support?.description,
 			icon: <Icons.headphones className="w-8 h-8" />,
-			content: "07 08 20 21 21",
+			content: dict.index?.contact?.support?.content,
 		},
 		{
-			title: "Adresse",
-			description: "Trouvez-nous",
+			title: dict.index?.contact?.address?.title,
+			description: dict.index?.contact?.address?.description,
 			icon: <Icons.mapPin className="w-8 h-8" />,
-			content: "N°102 LOT A DHER EL MEHREZ FES",
+			content: dict.index?.contact?.address?.content,
 		},
 		{
-			title: "Rencontre nous",
-			description: "Heures disponibles pour se réunir",
+			title: dict.index?.contact?.time?.title,
+			description: dict.index?.contact?.time?.description,
 			icon: <Icons.clock3 className="w-8 h-8" />,
-			content: "9:00 AM ⸺ 8:00 PM",
+			content: dict.index?.contact?.time?.content,
 		},
 	];
 	return (
 		<section id="contact" className="pt-24">
 			<div className="container">
 				<div className="space-y-3 text-center">
-					<h2 className="text-5xl font-extrabold tracking-tight md:text-6xl text-primary">
-						Besoin d&apos;aide 24/7
-					</h2>
+					<Heading>
+						{/* Besoin d&apos;aide 24/7 */}
+						{dict.index?.contact?.title}
+					</Heading>
 					<p className="text-foreground/75">
-						Renseignez vos informations et nous prendrons contact
-						avec vous.
+						{dict.index?.contact?.paragraph}
+						{/* Renseignez vos informations et nous prendrons contact
+						avec vous. */}
 					</p>
 				</div>
 				<div className="mt-16">
@@ -371,7 +372,10 @@ const Contact = () => {
 							height={400}
 							alt="Contact us"
 						/>
-						<ContactForm className="xl:col-span-2__" />
+						<ContactForm
+							className="xl:col-span-2__"
+							dictionary={dict.forms}
+						/>
 					</div>
 				</div>
 			</div>
@@ -428,7 +432,12 @@ const Contact = () => {
 										<span className="grid p-3 mx-auto bg-white rounded-full shadow-md w-max text-primary shadow-primary/40 place-items-center">
 											{item.icon}
 										</span>
-										<p>{item.content}</p>
+										<p
+											className="font-body"
+											style={{ direction: "ltr" }}
+										>
+											{item.content}
+										</p>
 									</div>
 								</div>
 							</li>
