@@ -1,14 +1,21 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Icons } from "@/components/icons";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import RegisterForm from "./register-form";
+import LinkWithLocale from "@/components/link-with-local";
 
-const LoginPage: React.FC = () => {
+import { Locale } from "@/i18n-config";
+import { getDictionary } from "@/get-dictionary";
+
+const RegisterPage: React.FC<{ params: { lang: Locale } }> = async ({
+	params: { lang },
+}) => {
+	const dict = await getDictionary(lang);
+
 	return (
 		<main className="relative">
-			<Link
+			<LinkWithLocale
 				href="/"
 				className={cn(
 					buttonVariants({ size: "icon", variant: "outline" }),
@@ -17,13 +24,13 @@ const LoginPage: React.FC = () => {
 				)}
 			>
 				<Icons.close className="group-hover:scale-125" />
-			</Link>
-			<div className="grid min-h-screen grid-cols-2">
+			</LinkWithLocale>
+			<div className="grid min-h-screen sm:grid-cols-2">
 				{/* Column 1: Illustration  */}
-				<div className="grid p-6 place-items-center">
+				<div className="hidden p-6 sm:grid rtl:order-last">
 					<Image
 						className="sticky -translate-y-1/2 top-1/2"
-						src="/img/login.png"
+						src="/img/register.png"
 						width={500}
 						height={500}
 						alt="Illustration"
@@ -31,20 +38,29 @@ const LoginPage: React.FC = () => {
 				</div>
 
 				{/* Column 2: Login Form */}
-				<div className="relative grid p-6 pb-12 bg-gray-100 xl:p-8 place-items-center">
+				<div className="relative grid px-6 pt-32 bg-gray-100 xl:px-8 place-items-center pb-14">
 					<div className={cn("w-full max-w-3xl")}>
-						<Link href="/" className="block max-w-full mb-4 w-72">
-							<Icons.logo />
-						</Link>
-						<h1 className="mb-12 font-medium tracking-wide text-gray-500">
-							Livrer avec Metalivraison — Créez votre compte
+						<LinkWithLocale
+							href="/"
+							className="block w-64 max-w-full mb-8 lg:w-80 rtl:mx-auto"
+						>
+							{lang === "ar" ? (
+								<Icons.logoAccount />
+							) : (
+								<Icons.logoAccount />
+							)}
+						</LinkWithLocale>
+						<h1 className="mb-12 text-sm tracking-wide text-gray-500">
+							{dict?.account?.["Deliver with Metalivraison"]}
 						</h1>
-						<RegisterForm />
+						<RegisterForm dictionary={dict?.forms} />
 					</div>
 					{/* footer */}
 					<footer className="absolute inset-x-0 bottom-0 py-4">
 						<p className="text-xs tracking-wider text-center uppercase text-gray-500/90">
-							Metalivraison © 2023 — Tous droits résérvés
+							{dict?.global?.Metalivraison} ©{" "}
+							{new Date().getFullYear()} —{" "}
+							{dict?.global?.copyright}
 						</p>
 					</footer>
 				</div>
@@ -53,4 +69,4 @@ const LoginPage: React.FC = () => {
 	);
 };
 
-export default LoginPage;
+export default RegisterPage;

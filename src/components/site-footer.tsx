@@ -1,8 +1,7 @@
-import Link from "next/link";
-import React from "react";
+import { useParams } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
-import { useParams } from "next/navigation";
+import LinkWithLocale from "./link-with-local";
 
 const menuItems = [
 	{
@@ -74,7 +73,7 @@ export default function Footer() {
 					<ul className="flex flex-col items-start gap-3.5 text-sm">
 						{menuItems?.map((menuItem, index) => (
 							<li key={index}>
-								<Link
+								<LinkWithLocale
 									href={menuItem.path}
 									className={cn(
 										"block pb-1.5 relative before:content-[''] before:absolute before:bottom-0 before:h-[2px] before:w-8 before:rounded-lg before:bg-primary",
@@ -83,14 +82,14 @@ export default function Footer() {
 								>
 									{lang === "fr" && menuItem.label.fr}
 									{lang === "ar" && menuItem.label.ar}
-								</Link>
+								</LinkWithLocale>
 							</li>
 						))}
 						<li>
 							<ul className="flex items-center -ml-3">
 								{socialLinks?.map((item, index) => (
 									<li key={index}>
-										<Link
+										<LinkWithLocale
 											href={item.url}
 											className="block p-3 transition w-max text-muted hover:text-white hover:-translate-y-0.5"
 											target="_blank"
@@ -98,7 +97,7 @@ export default function Footer() {
 											title={item.label}
 										>
 											{item.icon}
-										</Link>
+										</LinkWithLocale>
 									</li>
 								))}
 							</ul>
@@ -106,14 +105,31 @@ export default function Footer() {
 					</ul>
 				</div>
 			</div>
-			<div className="py-6 border-t border-gray-800">
-				<div className="container">
-					<p className="text-xs tracking-wider text-center text-gray-400 uppercase">
+			<div className="py-4 text-gray-400 border-t border-gray-800 ">
+				<div className="container grid items-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					<span className="hidden lg:block" />
+					<p className="text-xs tracking-wider text-center uppercase sm:text-left lg:text-center">
 						{lang === "fr" &&
 							`Metalivraison © ${new Date().getFullYear()} — Tous droits résérvés`}
 						{lang === "ar" &&
 							`ميتاليفريزون © ${new Date().getFullYear()} — جميع الحقوق محفوضة`}
 					</p>
+					<div className="">
+						<LinkWithLocale
+							href="/team/login"
+							className={cn(
+								"flex items-center gap-2 mx-auto sm:ml-auto rtl:ml-0 rtl:sm:mr-auto w-max text-xs tracking-wider text-center uppercase group"
+							)}
+						>
+							<span className="underline-offset-4 group-hover:underline group-hover:text-gray-200">
+								{lang === "fr" && "Connexion employé"}
+								{lang === "ar" && "تسجيل دخول الموظف"}
+							</span>
+							<span className="p-1.5 bg-gray-400 rounded-full text-dark/80 group-hover:bg-white group-hover:scale-95">
+								<Icons.arrowRight className="w-3.5 h-3.5 rtl:-scale-x-100" />
+							</span>
+						</LinkWithLocale>
+					</div>
 				</div>
 			</div>
 		</footer>

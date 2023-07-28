@@ -15,6 +15,7 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import LocaleSwitcher from "./locale-switcher";
+import LinkWithLocale from "./link-with-local";
 // import { getDictionary } from "@/get-dictionary";
 
 interface MenuItem {
@@ -64,7 +65,7 @@ const Header = () => {
 	// console.log(title);
 
 	return (
-		<header className="sticky top-0 z-20">
+		<>
 			<nav className="py-2 text-xs font-medium bg-white">
 				<div className="container">
 					<div className="flex items-center justify-between gap-6">
@@ -86,21 +87,21 @@ const Header = () => {
 				</div>
 			</nav>
 
-			<nav className="py-4 bg-gray-200/40 backdrop-blur-xl">
+			<header className="sticky top-0 z-20 py-3 lg:py-4 bg-gray-200/40 backdrop-blur-xl">
 				<div className="container">
 					<div className="flex items-center justify-between gap-6">
 						{/* Logo */}
-						<Link href={`/${lang}`} className="block md:w-56">
+						<LinkWithLocale href={`/`} className="block md:w-56">
 							{lang === "ar" ? (
 								<Icons.logoRtl className="hidden md:block" />
 							) : (
 								<Icons.logo className="hidden md:block" />
 							)}
 							<Icons.logoSmall className="block w-12 h-12 md:hidden" />
-						</Link>
+						</LinkWithLocale>
 
 						{/* Menu */}
-						<ul className="items-center hidden gap-1 md:flex">
+						<ul className="items-center hidden gap-1 lg:flex">
 							{menuItems.map((item, index) => (
 								<li key={index}>
 									<Link
@@ -123,20 +124,18 @@ const Header = () => {
 
 						{/* CTA Button */}
 						<div className="flex items-center flex-shrink-0 gap-3">
-							<Link
-								href={`/${lang}/register`}
+							<LinkWithLocale
+								href={`/register`}
 								className={cn(
 									buttonVariants({}),
 									"h-10 px-5 text-sm"
 								)}
-								locale={lang as string}
 							>
 								{lang === "fr" && "Livrer avec metalivraison"}
 								{lang === "ar" && "تسجل الآن"}
-							</Link>
-							<Link
-								href={`/${lang}/login`}
-								locale={lang as string}
+							</LinkWithLocale>
+							<LinkWithLocale
+								href={`/login`}
 								className={cn(
 									buttonVariants({ size: "icon" }),
 									"w-10 h-10 text-sm"
@@ -149,12 +148,12 @@ const Header = () => {
 							>
 								{/* Se connecter */}
 								<Icons.login className="w-5 h-5 rtl:-scale-x-100" />
-							</Link>
+							</LinkWithLocale>
 						</div>
 					</div>
 				</div>
-			</nav>
-		</header>
+			</header>
+		</>
 	);
 };
 

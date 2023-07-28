@@ -77,13 +77,35 @@
 		}
 	},
 	"forms": {
+		"First name": "Prénom",
+		"Last name": "Nom",
+		"CIN": "CIN",
+		"RIB": "RIB",
+		"Bank": "Banque",
+		"City": "Ville",
+		"Address": "Adresse",
+		"Store/Brand": "Boutique/Brand",
+		"Confirm password": "Confirmez le mot de passe",
+		"Loading...": "Chargement...",
+		"Remember me": "Se souvenir de moi",
+
 		"Full name": "Nom complet",
 		"Email": "Email",
 		"Phone": "Téléphone",
 		"Your message": "Votre message",
 		"Password": "Mot de passe",
 		"Send": "Envoyer",
-		"Submit": "Soumettre"
+		"Submit": "Soumettre",
+		"Back": "Retour",
+		"Register": "S'inscrire",
+		"Log in": "Se connecter",
+		"Already registered?": "Vous avez déjà un compte ?",
+		"Not registered yet?": "Vous n'avez encore un compte ?",
+		"Sign in": "Connectez-vous",
+		"Sign up": "Inscrivez-vous"
+	},
+	"account": {
+		"Deliver with Metalivraison": "Livrer avec Metalivraison — Créez votre compte"
 	},
 	"menu": {
 		"Tracking": "Suivi",
@@ -96,13 +118,6 @@
 		"Deliver with Metalivraison": "Livrer avec metalivraison",
 		"Customer account": "Espace client",
 		"Track": "Suivre",
-		"Back": "Retour",
-		"Register": "S'inscrire",
-		"Log in": "Se connecter",
-		"Already registered?": "Vous avez déjà un compte ?",
-		"Not registered yet?": "Vous n'avez encore un compte ?",
-		"Sign in": "Connectez-vous",
-		"Sign up": "Inscrivez-vous",
 		"copyright": "Tous droits résérvés",
 		"footer-slogan": "Avec la volonté de notre équipe, votre ambition sera réalisée",
 		"Contact": "Contact",

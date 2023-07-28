@@ -12,12 +12,16 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import { cn } from "@/lib/utils";
+import LinkWithLocale from "@/components/link-with-local";
 
-const RegisterForm = () => {
+const RegisterForm = ({
+	dictionary,
+}: {
+	dictionary: { [key: string]: string };
+}) => {
 	const formSchema = z
 		.object({
 			lastName: z.string().min(2, {
@@ -122,7 +126,7 @@ const RegisterForm = () => {
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder="Nom"
+									placeholder={dictionary?.["Last name"]}
 									{...field}
 								/>
 							</FormControl>
@@ -139,7 +143,7 @@ const RegisterForm = () => {
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder="Prénom"
+									placeholder={dictionary?.["First name"]}
 									{...field}
 								/>
 							</FormControl>
@@ -156,7 +160,7 @@ const RegisterForm = () => {
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder="Numéro de téléphone"
+									placeholder={dictionary?.Phone}
 									{...field}
 								/>
 							</FormControl>
@@ -173,7 +177,7 @@ const RegisterForm = () => {
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder="Email"
+									placeholder={dictionary?.Email}
 									{...field}
 								/>
 							</FormControl>
@@ -191,7 +195,7 @@ const RegisterForm = () => {
 								<Input
 									className="h-14"
 									type="password"
-									placeholder="Mot de passe"
+									placeholder={dictionary?.Password}
 									{...field}
 								/>
 							</FormControl>
@@ -209,7 +213,9 @@ const RegisterForm = () => {
 								<Input
 									className="h-14"
 									type="password"
-									placeholder="Confirmez le mot de passe"
+									placeholder={
+										dictionary?.["Confirm password"]
+									}
 									{...field}
 								/>
 							</FormControl>
@@ -226,7 +232,7 @@ const RegisterForm = () => {
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder="Boutique, Brand"
+									placeholder={dictionary?.["Store/Brand"]}
 									{...field}
 								/>
 							</FormControl>
@@ -243,7 +249,7 @@ const RegisterForm = () => {
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder="CIN"
+									placeholder={dictionary?.["CIN"]}
 									{...field}
 								/>
 							</FormControl>
@@ -260,7 +266,7 @@ const RegisterForm = () => {
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder="Banque"
+									placeholder={dictionary?.Bank}
 									{...field}
 								/>
 							</FormControl>
@@ -277,7 +283,7 @@ const RegisterForm = () => {
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder="RIB"
+									placeholder={dictionary?.RIB}
 									{...field}
 								/>
 							</FormControl>
@@ -294,7 +300,7 @@ const RegisterForm = () => {
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder="Ville"
+									placeholder={dictionary?.City}
 									{...field}
 								/>
 							</FormControl>
@@ -311,7 +317,7 @@ const RegisterForm = () => {
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder="Adresse"
+									placeholder={dictionary?.Address}
 									{...field}
 								/>
 							</FormControl>
@@ -321,34 +327,33 @@ const RegisterForm = () => {
 				/>
 
 				{/* Submit Button */}
-				<div className="flex justify-between gap-4 lg:col-span-2">
-					<Link
+				<div className="flex justify-between gap-4 rtl:gap-5 lg:col-span-2">
+					<LinkWithLocale
 						href="/"
 						className={cn(
 							buttonVariants({
 								variant: "outline",
 							}),
-							"flex gap-1 text-dark/70 items-center"
+							"flex gap-1 text-dark/70 items-center rtl:order-last"
 						)}
 					>
-						<Icons.arrowLeft
-							className="w-4 h-4"
-							strokeWidth={1.5}
-						/>
-						Retour
-					</Link>
+						<Icons.arrowLeft className="w-4 h-4 rtl:order-last" />
+						{dictionary?.Back}
+					</LinkWithLocale>
 					<Button type="submit" className="h-14" disabled={isLoading}>
-						{isLoading ? "Chargement..." : "S'inscrire"}
+						{isLoading
+							? dictionary?.["Loading..."]
+							: dictionary?.Register}
 					</Button>
 				</div>
 				<p className="pt-6 text-sm text-center lg:col-span-2 text-foreground/80">
-					Vous avez déjà un compte ?{" "}
-					<Link
+					{dictionary?.["Already registered?"]}
+					<LinkWithLocale
 						href="/login"
-						className="underline underline-offset-4 hover:text-dark"
+						className="mx-1.5 underline underline-offset-4 hover:text-dark"
 					>
-						Connectez-vous
-					</Link>
+						{dictionary?.["Sign in"]}
+					</LinkWithLocale>
 				</p>
 			</form>
 		</Form>

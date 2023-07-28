@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import Heading from "@/components/ui/heading";
+import LinkWithLocale from "@/components/link-with-local";
 
 export default async function Home({
 	params: { lang },
@@ -37,7 +38,7 @@ const Hero = async ({ lang }: { lang: Locale }) => {
 		<section id="hero" className="py-24">
 			<div className="container">
 				<div className="grid items-center grid-cols-1 gap-8 md:grid-cols-2">
-					<div className="space-y-6">
+					<div className="order-last space-y-6 md:order-first">
 						<Heading variant="h1">
 							{/* On — time Satisfaction */}
 							{dict.index?.hero?.title}
@@ -51,24 +52,24 @@ const Hero = async ({ lang }: { lang: Locale }) => {
 							{dict.index?.hero?.paragraph}
 						</p>
 						<div className="flex flex-wrap gap-4 sm:flex-nowrap md:flex-wrap lg:flex-nowrap">
-							<Link
-								href="/"
+							<LinkWithLocale
+								href="/register"
 								className={cn(
 									buttonVariants({ variant: "default" }),
 									"w-full sm:w-max"
 								)}
 							>
 								{dict.global?.["Deliver with Metalivraison"]}
-							</Link>
-							<Link
-								href="/"
+							</LinkWithLocale>
+							<LinkWithLocale
+								href="/login"
 								className={cn(
 									buttonVariants({ variant: "outline" }),
 									"w-full sm:w-max"
 								)}
 							>
 								{dict.global?.["Customer account"]}
-							</Link>
+							</LinkWithLocale>
 						</div>
 					</div>
 					<div className="w-full">
@@ -104,29 +105,29 @@ const Tracking = async ({ lang }: { lang: Locale }) => {
 					</p>
 				</div>
 				<TrackingForm dictionary={formDict} />
-				<ul className="flex flex-wrap items-start justify-between gap-4 mt-8 lg:justify-center md:mt-12 lg:mt-24 lg:gap-10 xl:gap-32">
+				<ul className="flex flex-wrap justify-center max-w-6xl gap-4 mx-auto mt-12 sm:justify-between___ items-start___ lg:justify-center lg:mt-24 lg:gap-10 xl:gap-32">
 					{/* {[1, 2, 3, 4].map((item, index) => (
               ))} */}
-					<li className="flex flex-col gap-1.5 items-center text-center">
+					<li className="drop-shadow-sm rounded-2xl p-6 bg-white w-36 md:w-44 flex flex-col gap-1.5 items-center text-center">
 						<Icons.truck className="w-16 h-16 md:w-20 md:h-20 text-primary rtl:-scale-x-100" />
 						<span className="text-sm font-medium lfirst-letter:eading-snug md:text-base">
 							{/* Colis collecté */}
 							{dict.index?.tracking?.["Package collected"]}
 						</span>
 					</li>
-					<li className="flex flex-col gap-1.5 items-center text-center">
+					<li className="drop-shadow-sm rounded-2xl p-6 bg-white w-36 md:w-44 flex flex-col gap-1.5 items-center text-center">
 						<Icons.cogTriple className="w-16 h-16 md:w-20 md:h-20 text-primary" />
 						<span className="text-sm font-medium lfirst-letter:eading-snug md:text-base">
 							{dict.index?.tracking?.["Package being processed"]}
 						</span>
 					</li>
-					<li className="flex flex-col gap-1.5 items-center text-center">
+					<li className="drop-shadow-sm rounded-2xl p-6 bg-white w-36 md:w-44 flex flex-col gap-1.5 items-center text-center">
 						<Icons.clock className="w-16 h-16 md:w-20 md:h-20 p-3.5 text-primary" />
 						<span className="text-sm font-medium lfirst-letter:eading-snug md:text-base">
 							{dict.index?.tracking?.["Package on delivery"]}
 						</span>
 					</li>
-					<li className="flex flex-col gap-1.5 items-center text-center">
+					<li className="drop-shadow-sm rounded-2xl p-6 bg-white w-36 md:w-44 flex flex-col gap-1.5 items-center text-center">
 						<Icons.check
 							strokeWidth={1.15}
 							className="w-16 h-16 p-2 md:w-20 md:h-20 text-primary"
@@ -188,19 +189,19 @@ const Services = async ({ lang }: { lang: Locale }) => {
 					</p>
 				</div>
 				<div className="mt-14">
-					<ul className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+					<ul className="grid grid-cols-2 gap-6 md:gap-8 lg:gap-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 						{items.map((item, index) => (
 							<li
 								key={index}
 								className={cn(
-									"flex flex-col items-center gap-1.5 text-center bg-gray-100 p-4 sm:p-6 xl:p-8 rounded-2xl",
+									"flex flex-col items-center gap-1.5 text-center bg-gray-100 p-3 sm:p-6 xl:p-8 rounded-2xl",
 									"border border-gray-200"
 								)}
 							>
 								<span className="text-primary">
 									{item.icon}
 								</span>
-								<h3 className="text-lg font-medium tracking-wide text-primary rtl:text-xl rtl:font-semibold">
+								<h3 className="font-medium tracking-wide md:text-lg text-primary rtl:text-xl rtl:font-semibold">
 									{item.title}
 								</h3>
 								<p className="text-sm text-dark/70 rtl:text-base rtl:leading-7">
@@ -210,14 +211,14 @@ const Services = async ({ lang }: { lang: Locale }) => {
 						))}
 					</ul>
 					<div className="flex justify-center mt-16">
-						<Link
-							href="/"
+						<LinkWithLocale
+							href="/register"
 							className={cn(
 								buttonVariants({ variant: "default" })
 							)}
 						>
 							{dict.global?.["Deliver with Metalivraison"]}
-						</Link>
+						</LinkWithLocale>
 					</div>
 				</div>
 			</div>
@@ -241,9 +242,12 @@ const MoneyTransfer = async ({ lang }: { lang: Locale }) => {
 							{dict.index?.["money-transfer"]?.paragraph}
 							{/* Virement bancaire de fonds chaque 48 heures ou moins.*/}
 						</p>
-						<Link href="/" className={cn(buttonVariants({}))}>
+						<LinkWithLocale
+							href="/register"
+							className={cn(buttonVariants({}))}
+						>
 							{dict.global?.["Deliver with Metalivraison"]}
-						</Link>
+						</LinkWithLocale>
 					</div>
 					<div className="grid__ place-items-center">
 						<Image
@@ -413,7 +417,7 @@ const Contact = async ({ lang }: { lang: Locale }) => {
 								<h3 className="pt-3 text-xl font-semibold text-dark/90">
 									{item?.title}
 								</h3>
-								<p className="text-foreground/75">
+								<p className="text-sm text-foreground/75">
 									{item?.description}
 								</p>
 								<span

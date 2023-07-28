@@ -17,7 +17,7 @@ export default function LocaleSwitcher() {
 	};
 
 	return (
-		<ul className="flex items-center gap-2.5">
+		<ul className="flex items-center gap-1">
 			{i18n.locales.map((locale) => {
 				return (
 					<li key={locale}>
@@ -33,12 +33,14 @@ export default function LocaleSwitcher() {
 						>
 							{locale !== "ar" && locale !== "fr" && locale}
 							{locale === "ar" && (
-								<span className="text-xs font-rtl">
+								<span className="hidden text-xs lg:inline-block font-rtl">
 									العربية
 								</span>
 							)}
 							{locale === "fr" && (
-								<span className="text-xs">Français</span>
+								<span className="hidden text-xs lg:inline-block">
+									Français
+								</span>
 							)}
 							<span className="w-6 h-6 overflow-hidden rounded-full">
 								<Image

@@ -77,13 +77,35 @@
 		}
 	},
 	"forms": {
+		"First name": "الاسم الشخصي",
+		"Last name": "الإسم العائلي",
+		"CIN": "CIN",
+		"RIB": "RIB",
+		"Bank": "البنك",
+		"City": "المدينة",
+		"Address": "العنوان",
+		"Store/Brand": "المتجر أو العلامة التجارية",
+		"Confirm password": "تأكيد كلمة المرور",
+		"Loading...": "تحميل...",
+		"Remember me": "تذكرني في المرة القادمة",
+
 		"Full name": "الإسم الكامل",
 		"Email": "البريد الإلكتروني",
 		"Phone": "رقم الهاتف",
 		"Your message": "اكتب رسالتك هنا",
 		"Password": "كلمة المرور",
 		"Send": "أرسل",
-		"Submit": "إرسال"
+		"Submit": "إرسال",
+		"Back": "عودة",
+		"Register": "تسجيل",
+		"Log in": "تسجيل الدخول",
+		"Already registered?": "مسجل بالفعل ؟",
+		"Not registered yet?": "غير مسجل حتى الآن ؟",
+		"Sign in": "تسجيل الدخول",
+		"Sign up": "اشتراك"
+	},
+	"account": {
+		"Deliver with Metalivraison": "التسليم مع ميتاليفريزون - أنشئ حسابك"
 	},
 	"menu": {
 		"Tracking": "تتبع الطلب",
@@ -96,13 +118,6 @@
 		"Deliver with Metalivraison": "ابدأ التوصيل مع ميتاليفريزون",
 		"Customer account": "فضاء المستخدم",
 		"Track": "تتبع الطلب",
-		"Back": "عودة",
-		"Register": "تسجيل",
-		"Log in": "تسجيل الدخول",
-		"Already registered?": "مسجل بالفعل؟",
-		"Not registered yet?": "غير مسجل حتى الآن؟",
-		"Sign in": "تسجيل الدخول",
-		"Sign up": "اشتراك",
 		"copyright": "جميع الحقوق محفوضة",
 		"footer-slogan": "بإرادة فريق ميتاليفريزون أحلامكم ستصبح حقيقة",
 		"Contact": "اتصل بنا",
