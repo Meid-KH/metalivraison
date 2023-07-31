@@ -1,5 +1,8 @@
+import { Locale } from "@/i18n-config";
 import { Payment, columns } from "./columns";
 import { DataTable } from "./data-table";
+import { getDictionary } from "@/get-dictionary";
+import Heading from "@/components/ui/heading";
 
 async function getData(): Promise<Payment[]> {
 	// Fetch data from your API here.
@@ -113,17 +116,34 @@ async function getData(): Promise<Payment[]> {
 		},
 	];
 }
-export default async function page() {
+export default async function page({
+	params: { lang },
+}: {
+	params: { lang: Locale };
+}) {
 	const data = await getData();
+	const dict = await getDictionary(lang);
+	const words = dict?.pricing?.title.split(" ");
+	const TitleFirstPart = words.slice(0, -1).join(" ");
+	const TitleLastWord = words[words.length - 1];
+
 	return (
 		<section className="py-24 xl:py-32">
 			<div className="container">
-				<h1 className="text-5xl font-black tracking-tight text-center lg:text-8xl text-primary">
-					Zone de livraison <br className="" /> et{" "}
-					<span className="text-dark/90">tarifs</span>
-				</h1>
+				<Heading variant="h1" className="text-center rtl:leading-snug">
+					{/* Zone de livraison <br className="" /> et{" "}
+					<span className="text-dark/90">tarifs</span> */}
+					{TitleFirstPart} <br className="" />
+					<span className="text-transparent bg-clip-text bg-gradient-to-tr from-dark via-gray-700 to-gray-500">
+						{TitleLastWord}
+					</span>
+				</Heading>
 				<div className="mt-24">
-					<DataTable columns={columns} data={data} />
+					<DataTable
+						columns={columns}
+						data={data}
+						dictionary={dict?.global}
+					/>
 				</div>
 			</div>
 		</section>

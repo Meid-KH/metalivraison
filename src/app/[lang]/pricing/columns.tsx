@@ -11,6 +11,7 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ColumnDef } from "@tanstack/react-table";
+import LangHelper from "./lang-helper";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -31,13 +32,13 @@ export const columns: ColumnDef<Payment>[] = [
 				<Button
 					variant={"ghost"}
 					size={"sm"}
-					className="h-8 py-1 -ml-3 hover:bg-gray-200"
+					className="inline-flex h-8 gap-1 py-1 -ml-3 rtl:ml-0 rtl:-mr-3 hover:bg-gray-200"
 					onClick={() =>
 						column.toggleSorting(column.getIsSorted() === "asc")
 					}
 				>
-					Ville
-					<ArrowUpDown className="flex-shrink-0 w-4 h-4 ml-1" />
+					<LangHelper col="city" />
+					<ArrowUpDown className="flex-shrink-0 w-4 h-4" />
 				</Button>
 			);
 		},
@@ -53,9 +54,9 @@ export const columns: ColumnDef<Payment>[] = [
 					column.toggleSorting(column.getIsSorted() === "asc")
 				}
 			>
-				Frais de livraison
+				<LangHelper col="shippingFee" />
 				<span className="px-1.5 text-xs bg-gray-200 border rounded-full border-dark/20">
-					MAD
+					<LangHelper col="currency" />
 				</span>
 				<ArrowUpDown className="flex-shrink-0 w-4 h-4 ml-1" />
 			</Button>
@@ -65,9 +66,9 @@ export const columns: ColumnDef<Payment>[] = [
 		accessorKey: "refusalFee",
 		header: ({ column }) => (
 			<div className="flex gap-1.5 items-end justify-center">
-				Frais de refus
+				<LangHelper col="refusalFee" />
 				<span className="px-1.5 text-xs bg-gray-200 border rounded-full border-dark/20">
-					MAD
+					<LangHelper col="currency" />
 				</span>
 			</div>
 		),
@@ -76,9 +77,9 @@ export const columns: ColumnDef<Payment>[] = [
 		accessorKey: "returnFee",
 		header: ({ column }) => (
 			<div className="flex gap-1.5 items-end justify-center">
-				Frais de retour
+				<LangHelper col="returnFee" />
 				<span className="px-1.5 text-xs bg-gray-200 border rounded-full border-dark/20">
-					MAD
+					<LangHelper col="currency" />
 				</span>
 			</div>
 		),
@@ -87,9 +88,9 @@ export const columns: ColumnDef<Payment>[] = [
 		accessorKey: "deliveryTime",
 		header: ({ column }) => (
 			<div className="flex gap-1.5 items-end justify-center">
-				Temps de livraison
-				<span className="px-1.5 text-xs bg-gray-200 border rounded-full border-dark/20">
-					JOURS
+				<LangHelper col="deliveryTime" />
+				<span className="px-1.5 text-xs bg-gray-200 uppercase border rounded-full border-dark/20">
+					<LangHelper col="period" />
 				</span>
 			</div>
 		),
@@ -114,17 +115,24 @@ export const columns: ColumnDef<Payment>[] = [
 						align="end"
 						className="border-dark/20 text-foreground/80"
 					>
-						<DropdownMenuLabel>Actions</DropdownMenuLabel>
+						<DropdownMenuLabel className="rtl:text-right">
+							<LangHelper col="actions" />
+						</DropdownMenuLabel>
 						<DropdownMenuItem
+							className="justify-end rtl:text-right"
 							onClick={() =>
 								navigator.clipboard.writeText("Text-copied")
 							}
 						>
-							Copier les tarifs
+							<LangHelper col="copy" />
 						</DropdownMenuItem>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem>Livrez ici</DropdownMenuItem>
-						<DropdownMenuItem>En savoir plus</DropdownMenuItem>
+						<DropdownMenuItem className="justify-end rtl:text-right">
+							<LangHelper col="deliverHere" />
+						</DropdownMenuItem>
+						<DropdownMenuItem className="justify-end rtl:text-right">
+							<LangHelper col="viewMore" />
+						</DropdownMenuItem>
 					</DropdownMenuContent>
 				</DropdownMenu>
 			);

@@ -37,7 +37,7 @@ const Header = () => {
 				ar: "تتبع الطلب",
 				fr: "Suivi",
 			},
-			path: "/#tracking",
+			path: "/tracking",
 		},
 		{
 			title: {

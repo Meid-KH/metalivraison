@@ -19,29 +19,32 @@ import { Input } from "@/components/ui/input";
 import LinkWithLocale from "@/components/link-with-local";
 import { cn } from "@/lib/utils";
 
-const formSchema = z.object({
-	email: z
-		.string()
-		.email({
-			message: "Entrez un email valide.",
-		})
-		.min(2, {
-			message: "Entrez un email valide.",
-		}),
-	password: z.string().min(6, {
-		message: "Mote de passe doit comporter au moins 6 caractères.",
-	}),
-	rememberme: z.boolean(),
-});
-
-type FormValues = z.infer<typeof formSchema>;
-
 const LoginForm = ({
 	dictionary,
 }: {
-	dictionary: { [key: string]: string };
+	dictionary: {
+		forms: { [key: string]: string };
+		validation: { [key: string]: string };
+	};
 }) => {
 	const [isLoading, setIsLoading] = useState(false);
+
+	const formSchema = z.object({
+		email: z
+			.string()
+			.email({
+				message: dictionary?.validation?.email,
+			})
+			.min(2, {
+				message: dictionary?.validation?.email,
+			}),
+		password: z.string().min(6, {
+			message: dictionary?.validation?.password,
+		}),
+		rememberme: z.boolean(),
+	});
+
+	type FormValues = z.infer<typeof formSchema>;
 
 	const form = useForm<FormValues>({
 		resolver: zodResolver(formSchema),
@@ -76,8 +79,10 @@ const LoginForm = ({
 							<FormItem>
 								<FormControl>
 									<Input
-										className="h-14"
-										placeholder={dictionary?.["Email"]}
+										className="text-gray-200 bg-black border-2 border-gray-600 hover:border-gray-400 placeholder:text-gray-400 focus-visible:border-black"
+										placeholder={
+											dictionary?.forms?.["Email"]
+										}
 										{...field}
 									/>
 								</FormControl>
@@ -93,9 +98,11 @@ const LoginForm = ({
 							<FormItem>
 								<FormControl>
 									<Input
-										className="h-14"
+										className="text-gray-200 bg-black border-2 border-gray-600 hover:border-gray-400 placeholder:text-gray-400 focus-visible:border-black"
 										type="password"
-										placeholder={dictionary?.["Password"]}
+										placeholder={
+											dictionary?.forms?.["Password"]
+										}
 										{...field}
 									/>
 								</FormControl>
@@ -117,8 +124,11 @@ const LoginForm = ({
 										onCheckedChange={field.onChange}
 									/>
 								</FormControl>
-								<FormLabel htmlFor="terms" className="!m-0">
-									{dictionary?.["Remember me"]}
+								<FormLabel
+									htmlFor="terms"
+									className="!m-0 text-gray-300"
+								>
+									{dictionary?.forms?.["Remember me"]}
 								</FormLabel>
 							</FormItem>
 						)}
@@ -132,20 +142,20 @@ const LoginForm = ({
 								buttonVariants({
 									variant: "outline",
 								}),
-								"flex gap-1 text-dark/70 items-center rtl:order-last"
+								"flex gap-1 bg-gray-200 text-dark/70 items-center rtl:order-last"
 							)}
 						>
 							<Icons.arrowLeft className="w-4 h-4 rtl:order-last" />
-							{dictionary?.Back}
+							{dictionary?.forms?.Back}
 						</LinkWithLocale>
 						<Button
 							type="submit"
-							className="h-14"
+							className="bg-black border border-gray-200"
 							disabled={isLoading}
 						>
 							{isLoading
-								? dictionary?.["Loading..."]
-								: dictionary?.Register}
+								? dictionary?.forms?.["Loading..."]
+								: dictionary?.forms?.Register}
 						</Button>
 					</div>
 				</div>

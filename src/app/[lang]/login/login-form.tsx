@@ -20,29 +20,32 @@ import {
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 
-const formSchema = z.object({
-	email: z
-		.string()
-		.email({
-			message: "Entrez un email valide.",
-		})
-		.min(2, {
-			message: "Entrez un email valide.",
-		}),
-	password: z.string().min(6, {
-		message: "Mote de passe doit comporter au moins 6 caractères.",
-	}),
-	rememberme: z.boolean(),
-});
-
-type FormValues = z.infer<typeof formSchema>;
-
 export const LoginForm = ({
 	dictionary,
 }: {
-	dictionary: { [key: string]: string };
+	dictionary: {
+		forms: { [key: string]: string };
+		validation: { [key: string]: string };
+	};
 }) => {
 	const [isLoading, setIsLoading] = useState(false);
+
+	const formSchema = z.object({
+		email: z
+			.string()
+			.email({
+				message: dictionary?.validation?.email,
+			})
+			.min(2, {
+				message: dictionary?.validation?.email,
+			}),
+		password: z.string().min(6, {
+			message: dictionary?.validation?.password,
+		}),
+		rememberme: z.boolean(),
+	});
+
+	type FormValues = z.infer<typeof formSchema>;
 
 	const form = useForm<FormValues>({
 		resolver: zodResolver(formSchema),
@@ -77,7 +80,9 @@ export const LoginForm = ({
 								<FormControl>
 									<Input
 										className="h-14"
-										placeholder={dictionary?.["Email"]}
+										placeholder={
+											dictionary?.forms?.["Email"]
+										}
 										{...field}
 									/>
 								</FormControl>
@@ -95,7 +100,9 @@ export const LoginForm = ({
 									<Input
 										className="h-14"
 										type="password"
-										placeholder={dictionary?.["Password"]}
+										placeholder={
+											dictionary?.forms?.["Password"]
+										}
 										{...field}
 									/>
 								</FormControl>
@@ -118,7 +125,7 @@ export const LoginForm = ({
 									/>
 								</FormControl>
 								<FormLabel htmlFor="terms" className="!m-0">
-									{dictionary?.["Remember me"]}
+									{dictionary?.forms?.["Remember me"]}
 								</FormLabel>
 							</FormItem>
 						)}
@@ -136,7 +143,7 @@ export const LoginForm = ({
 							)}
 						>
 							<Icons.arrowLeft className="w-4 h-4 rtl:order-last" />
-							{dictionary?.Back}
+							{dictionary?.forms?.Back}
 						</LinkWithLocale>
 						<Button
 							type="submit"
@@ -144,18 +151,18 @@ export const LoginForm = ({
 							disabled={isLoading}
 						>
 							{isLoading
-								? dictionary?.["Loading..."]
-								: dictionary?.Register}
+								? dictionary?.forms?.["Loading..."]
+								: dictionary?.forms?.Register}
 						</Button>
 					</div>
 
 					<p className="pt-6 text-sm text-center text-foreground/80">
-						{dictionary?.["Not registered yet?"]}
+						{dictionary?.forms?.["Not registered yet?"]}
 						<LinkWithLocale
 							href="/register"
 							className="underline underline-offset-4 hover:text-dark mx-1.5"
 						>
-							{dictionary?.["Sign up"]}
+							{dictionary?.forms?.["Sign up"]}
 						</LinkWithLocale>
 					</p>
 				</div>

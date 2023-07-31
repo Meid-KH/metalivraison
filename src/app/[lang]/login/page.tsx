@@ -12,6 +12,8 @@ const LoginPage: React.FC<{ params: { lang: Locale } }> = async ({
 	params: { lang },
 }) => {
 	const dict = await getDictionary(lang);
+	const { forms, validation } = dict;
+	const allDict = { forms, validation };
 
 	return (
 		<main className="relative">
@@ -46,7 +48,7 @@ const LoginPage: React.FC<{ params: { lang: Locale } }> = async ({
 						>
 							<Icons.logoAccount />
 						</LinkWithLocale>
-						<LoginForm dictionary={dict?.forms} />
+						<LoginForm dictionary={allDict} />
 					</div>
 					{/* footer */}
 					<footer className="absolute inset-x-0 bottom-0 py-4">

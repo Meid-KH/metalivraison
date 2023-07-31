@@ -20,60 +20,61 @@ import LinkWithLocale from "@/components/link-with-local";
 const RegisterForm = ({
 	dictionary,
 }: {
-	dictionary: { [key: string]: string };
+	dictionary: {
+		forms: { [key: string]: string };
+		validation: { [key: string]: string };
+	};
 }) => {
+	console.log(dictionary);
+
 	const formSchema = z
 		.object({
 			lastName: z.string().min(2, {
-				message: "Le nom doit comporter au moins 2 caractères.",
+				message: dictionary?.validation?.lastName,
 			}),
 			firstName: z.string().min(2, {
-				message: "Le prénom doit comporter au moins 2 caractères.",
+				message: dictionary?.validation?.firstName,
 			}),
 			phone: z
 				.string()
 				.regex(
 					/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])$/,
 					{
-						message: "Numéro de téléphone invalide!",
+						message: dictionary?.validation?.phone,
 					}
 				)
-				.min(10, { message: "Doit être un numéro de téléphone valide" })
+				.min(10, { message: dictionary?.validation?.phone })
 				.max(14, {
-					message: "Doit être un numéro de téléphone valide",
+					message: dictionary?.validation?.phone,
 				}),
 			email: z.string().email({
-				message: "Entrez un email valide.",
+				message: dictionary?.validation?.email,
 			}),
 			password: z.string().min(6, {
-				message:
-					"Le mot de passe doit comporter au moins 6 caractères.",
+				message: dictionary?.validation?.password,
 			}),
 			confirmPassword: z.string(),
 			brand: z.string().min(2, {
-				message:
-					"Le nom de la boutique doit comporter au moins 2 caractères.",
+				message: dictionary?.validation?.brand,
 			}),
 			cin: z.string().min(5, {
-				message: "Le CIN doit comporter au moins 5 caractères.",
+				message: dictionary?.validation?.cin,
 			}),
 			bank: z.string().min(2, {
-				message:
-					"Le nom de la banque doit comporter au moins 2 caractères.",
+				message: dictionary?.validation?.bank,
 			}),
 			rib: z.string().min(10, {
-				message: "Le RIB doit comporter au moins 10 caractères.",
+				message: dictionary?.validation?.rib,
 			}),
 			city: z.string().min(2, {
-				message:
-					"Le nom de la ville doit comporter au moins 2 caractères.",
+				message: dictionary?.validation?.city,
 			}),
 			address: z.string().min(5, {
-				message: "L'adresse doit comporter au moins 5 caractères.",
+				message: dictionary?.validation?.address,
 			}),
 		})
 		.refine((data) => data.password === data.confirmPassword, {
-			message: "Les mots de passe ne correspondent pas.",
+			message: dictionary?.validation?.confirmPassword,
 			path: ["confirmPassword"],
 		});
 
@@ -126,7 +127,9 @@ const RegisterForm = ({
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder={dictionary?.["Last name"]}
+									placeholder={
+										dictionary?.forms?.["Last name"]
+									}
 									{...field}
 								/>
 							</FormControl>
@@ -143,7 +146,9 @@ const RegisterForm = ({
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder={dictionary?.["First name"]}
+									placeholder={
+										dictionary?.forms?.["First name"]
+									}
 									{...field}
 								/>
 							</FormControl>
@@ -160,7 +165,7 @@ const RegisterForm = ({
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder={dictionary?.Phone}
+									placeholder={dictionary?.forms?.Phone}
 									{...field}
 								/>
 							</FormControl>
@@ -177,7 +182,7 @@ const RegisterForm = ({
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder={dictionary?.Email}
+									placeholder={dictionary?.forms?.Email}
 									{...field}
 								/>
 							</FormControl>
@@ -195,7 +200,7 @@ const RegisterForm = ({
 								<Input
 									className="h-14"
 									type="password"
-									placeholder={dictionary?.Password}
+									placeholder={dictionary?.forms?.Password}
 									{...field}
 								/>
 							</FormControl>
@@ -214,7 +219,7 @@ const RegisterForm = ({
 									className="h-14"
 									type="password"
 									placeholder={
-										dictionary?.["Confirm password"]
+										dictionary?.forms?.["Confirm password"]
 									}
 									{...field}
 								/>
@@ -232,7 +237,9 @@ const RegisterForm = ({
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder={dictionary?.["Store/Brand"]}
+									placeholder={
+										dictionary?.forms?.["Store/Brand"]
+									}
 									{...field}
 								/>
 							</FormControl>
@@ -249,7 +256,7 @@ const RegisterForm = ({
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder={dictionary?.["CIN"]}
+									placeholder={dictionary?.forms?.["CIN"]}
 									{...field}
 								/>
 							</FormControl>
@@ -266,7 +273,7 @@ const RegisterForm = ({
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder={dictionary?.Bank}
+									placeholder={dictionary?.forms?.Bank}
 									{...field}
 								/>
 							</FormControl>
@@ -283,7 +290,7 @@ const RegisterForm = ({
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder={dictionary?.RIB}
+									placeholder={dictionary?.forms?.RIB}
 									{...field}
 								/>
 							</FormControl>
@@ -300,7 +307,7 @@ const RegisterForm = ({
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder={dictionary?.City}
+									placeholder={dictionary?.forms?.City}
 									{...field}
 								/>
 							</FormControl>
@@ -317,7 +324,7 @@ const RegisterForm = ({
 							<FormControl>
 								<Input
 									className="h-14"
-									placeholder={dictionary?.Address}
+									placeholder={dictionary?.forms?.Address}
 									{...field}
 								/>
 							</FormControl>
@@ -338,21 +345,21 @@ const RegisterForm = ({
 						)}
 					>
 						<Icons.arrowLeft className="w-4 h-4 rtl:order-last" />
-						{dictionary?.Back}
+						{dictionary?.forms?.Back}
 					</LinkWithLocale>
 					<Button type="submit" className="h-14" disabled={isLoading}>
 						{isLoading
-							? dictionary?.["Loading..."]
-							: dictionary?.Register}
+							? dictionary?.forms?.["Loading..."]
+							: dictionary?.forms?.Register}
 					</Button>
 				</div>
 				<p className="pt-6 text-sm text-center lg:col-span-2 text-foreground/80">
-					{dictionary?.["Already registered?"]}
+					{dictionary?.forms?.["Already registered?"]}
 					<LinkWithLocale
 						href="/login"
 						className="mx-1.5 underline underline-offset-4 hover:text-dark"
 					>
-						{dictionary?.["Sign in"]}
+						{dictionary?.forms?.["Sign in"]}
 					</LinkWithLocale>
 				</p>
 			</form>

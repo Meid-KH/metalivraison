@@ -27,11 +27,13 @@ import { Input } from "@/components/ui/input";
 interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[];
 	data: TData[];
+	dictionary: { [key: string]: string };
 }
 
 export function DataTable<TData, TValue>({
 	columns,
 	data,
+	dictionary,
 }: DataTableProps<TData, TValue>) {
 	const [sorting, setSorting] = React.useState<SortingState>([]);
 	const [columnFilters, setColumnFilters] =
@@ -54,9 +56,9 @@ export function DataTable<TData, TValue>({
 
 	return (
 		<div className="">
-			<div className="flex items-center justify-end mb-6 lg:mb-8">
+			<div className="flex items-center justify-end mb-6 rtl:justify-start lg:mb-8">
 				<Input
-					placeholder="Filtre par ville..."
+					placeholder={`${dictionary?.["Filter by city"]}...`}
 					value={
 						(table.getColumn("city")?.getFilterValue() as string) ??
 						""
@@ -122,14 +124,14 @@ export function DataTable<TData, TValue>({
 					</TableBody>
 				</Table>
 			</div>
-			<div className="flex items-center justify-end mt-6 space-x-4 lg:mt-8">
+			<div className="flex items-center justify-end gap-4 mt-6 lg:mt-8">
 				<Button
 					variant="outline"
 					size="sm"
 					onClick={() => table.previousPage()}
 					disabled={!table.getCanPreviousPage()}
 				>
-					Previous
+					{dictionary?.previous}
 				</Button>
 				<Button
 					variant="outline"
@@ -137,7 +139,7 @@ export function DataTable<TData, TValue>({
 					onClick={() => table.nextPage()}
 					disabled={!table.getCanNextPage()}
 				>
-					Next
+					{dictionary?.next}
 				</Button>
 			</div>
 		</div>

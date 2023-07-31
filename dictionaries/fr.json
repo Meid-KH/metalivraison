@@ -76,6 +76,12 @@
 			}
 		}
 	},
+	"pricing": {
+		"title": "Zone de livraison et tarifs"
+	},
+	"tracking": {
+		"title": "Suivi de livraison"
+	},
 	"forms": {
 		"First name": "Prénom",
 		"Last name": "Nom",
@@ -88,7 +94,6 @@
 		"Confirm password": "Confirmez le mot de passe",
 		"Loading...": "Chargement...",
 		"Remember me": "Se souvenir de moi",
-
 		"Full name": "Nom complet",
 		"Email": "Email",
 		"Phone": "Téléphone",
@@ -103,6 +108,20 @@
 		"Not registered yet?": "Vous n'avez encore un compte ?",
 		"Sign in": "Connectez-vous",
 		"Sign up": "Inscrivez-vous"
+	},
+	"validation": {
+		"lastName": "Le nom doit comporter au moins 2 caractères",
+		"firstName": "Le prénom doit comporter au moins 2 caractères",
+		"phone": "Numéro de téléphone invalide",
+		"email": "Entrez un email valide",
+		"password": "Le mot de passe doit comporter au moins 6 caractères",
+		"confirmPassword": "Les mots de passe ne correspondent pas",
+		"brand": "Le nom de la boutique doit comporter au moins 2 caractères",
+		"cin": "Le CIN doit comporter au moins 5 caractères",
+		"bank": "Le nom de la banque doit comporter au moins 2 caractères",
+		"rib": "Le RIB doit comporter au moins 10 caractères",
+		"city": "Le nom de la ville doit comporter au moins 2 caractères",
+		"address": "L'adresse doit comporter au moins 5 caractères"
 	},
 	"account": {
 		"Deliver with Metalivraison": "Livrer avec Metalivraison — Créez votre compte"
@@ -123,6 +142,9 @@
 		"Contact": "Contact",
 		"Tracking delivery": "Suivi de Livraison",
 		"Metalivraison pricing": "Metalivraison tarifs",
-		"tracking number": "N° de suivi"
+		"tracking number": "N° de suivi",
+		"previous": "Précédent",
+		"next": "Suivant",
+		"Filter by city": "Filtre par ville"
 	}
 }

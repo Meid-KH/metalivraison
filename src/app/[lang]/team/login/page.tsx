@@ -11,6 +11,8 @@ const TeamLoginPage: React.FC<{ params: { lang: Locale } }> = async ({
 	params: { lang },
 }) => {
 	const dict = await getDictionary(lang);
+	const { forms, validation } = dict;
+	const allDict = { forms, validation };
 
 	return (
 		<main className="relative">
@@ -18,15 +20,15 @@ const TeamLoginPage: React.FC<{ params: { lang: Locale } }> = async ({
 				href="/"
 				className={cn(
 					buttonVariants({ size: "icon", variant: "outline" }),
-					"absolute z-10 grid w-20 h-20 top-6 right-6 place-items-center bg-white",
-					"transition group hover:text-white hover:bg-dark hover:scale-90 hover:drop-shadow"
+					"absolute z-10 grid w-20 h-20 top-6 right-6 place-items-center bg-gray-100",
+					"transition group hover:bg-white hover:scale-90 hover:drop-shadow"
 				)}
 			>
 				<Icons.close className="group-hover:scale-125" />
 			</LinkWithLocale>
 			<div className="grid h-screen overflow-hidden sm:grid-cols-2">
 				{/* Column 1: Illustration  */}
-				<div className="hidden p-6 sm:grid rtl:order-last">
+				<div className="hidden p-6 place-items-center bg-gradient-radial from-gray-700 via-gray-800 to-gray-900 sm:grid rtl:order-last">
 					<Image
 						className="sticky -translate-y-1/2 top-1/2"
 						src="/img/team-login.png"
@@ -37,15 +39,15 @@ const TeamLoginPage: React.FC<{ params: { lang: Locale } }> = async ({
 				</div>
 
 				{/* Column 2: Login Form */}
-				<div className="relative grid p-6 pb-12 overflow-y-auto bg-gray-100 place-items-center">
+				<div className="relative grid p-6 pb-12 overflow-y-auto text-gray-100 border-l border-gray-800 bg-gradient-radial from-gray-900 via-dark to-black place-items-center">
 					<section className="w-full max-w-md">
 						<LinkWithLocale
 							href="/"
-							className="block w-64 max-w-full mb-16 lg:w-80 rtl:mx-auto"
+							className="block w-64 max-w-full mb-16 lg:w-80 rtl:mx-auto opacity-90 hover:opacity-100"
 						>
-							<Icons.logoAccount />
+							<Icons.logoTeamDark />
 						</LinkWithLocale>
-						<LoginForm dictionary={dict.forms} />
+						<LoginForm dictionary={allDict} />
 					</section>
 					{/* footer */}
 					<footer className="absolute inset-x-0 bottom-0 py-4">

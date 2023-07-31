@@ -339,12 +339,19 @@ const Contact = async ({ lang }: { lang: Locale }) => {
 			description: dict.index?.contact?.support?.description,
 			icon: <Icons.headphones className="w-8 h-8" />,
 			content: dict.index?.contact?.support?.content,
+			link: {
+				phone: true,
+				url: dict.index?.contact?.time?.content,
+			},
 		},
 		{
 			title: dict.index?.contact?.address?.title,
 			description: dict.index?.contact?.address?.description,
 			icon: <Icons.mapPin className="w-8 h-8" />,
 			content: dict.index?.contact?.address?.content,
+			link: {
+				url: "https://goo.gl/maps/6qZwFDEs8PsTqLHt9",
+			},
 		},
 		{
 			title: dict.index?.contact?.time?.title,
@@ -440,7 +447,25 @@ const Contact = async ({ lang }: { lang: Locale }) => {
 											className="font-body"
 											style={{ direction: "ltr" }}
 										>
-											{item.content}
+											{item?.link ? (
+												<a
+													href={
+														item?.link?.phone
+															? `tel:${item?.content?.replace(
+																	/\s/g,
+																	""
+															  )}`
+															: item?.link?.url
+													}
+													target="_blank"
+													rel="noreferrer, noopener"
+													className="underline-offset-4 hover:underline"
+												>
+													{item?.content}
+												</a>
+											) : (
+												item.content
+											)}
 										</p>
 									</div>
 								</div>

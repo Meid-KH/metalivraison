@@ -13,6 +13,9 @@ const RegisterPage: React.FC<{ params: { lang: Locale } }> = async ({
 }) => {
 	const dict = await getDictionary(lang);
 
+	const { forms, validation } = dict;
+	const allDict = { forms, validation };
+
 	return (
 		<main className="relative">
 			<LinkWithLocale
@@ -50,10 +53,10 @@ const RegisterPage: React.FC<{ params: { lang: Locale } }> = async ({
 								<Icons.logoAccount />
 							)}
 						</LinkWithLocale>
-						<h1 className="mb-12 text-sm tracking-wide text-gray-500">
+						<h1 className="mb-12 text-sm tracking-wide text-gray-500 rtl:text-center">
 							{dict?.account?.["Deliver with Metalivraison"]}
 						</h1>
-						<RegisterForm dictionary={dict?.forms} />
+						<RegisterForm dictionary={allDict} />
 					</div>
 					{/* footer */}
 					<footer className="absolute inset-x-0 bottom-0 py-4">

@@ -20,6 +20,9 @@ module.exports = {
 			rtl: "var(--rtl-font)",
 		},
 		extend: {
+			backgroundImage: {
+				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+			},
 			colors: {
 				dark: "#1B1C20",
 				border: "hsl(var(--border))",
