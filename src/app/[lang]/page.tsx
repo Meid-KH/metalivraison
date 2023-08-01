@@ -181,7 +181,7 @@ const Services = async ({ lang }: { lang: Locale }) => {
 						{dict.index?.services?.title}
 						{/* Découvrez nos services */}
 					</Heading>
-					<p className="text-dark/70">
+					<p className="max-w-2xl mx-auto text-dark/70">
 						{dict.index?.services?.paragraph}
 						{/* Lorem ipsum dolor sit amet consectetur adipisicing
 						elitquisquam rerum magnam, quidem. <br className="" />{" "}
