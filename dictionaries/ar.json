@@ -145,6 +145,13 @@
 		"tracking number": "رقم التتبع",
 		"previous": "السابق",
 		"next": "التالي",
-		"Filter by city": "تصفية حسب المدينة"
+		"Filter by city": "تصفية حسب المدينة",
+		"validation": {
+			"trackingNumber": "أدخل رقم تتبع صالحًا"
+		}
+	},
+	"metadata": {
+		"title": "ميتاليفريزون",
+		"description": "بإرادتنا حلمكم يوصل"
 	}
 }

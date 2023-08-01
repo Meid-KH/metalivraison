@@ -18,20 +18,19 @@ import {
 import { Input } from "@/components/ui/input";
 import { Icons } from "./icons";
 
-const formSchema = z.object({
-	trackingNumber: z.string().min(6, {
-		message: "Entrez un numero de suivi valide.",
-	}),
-});
-
 const TrackingForm = ({
 	dictionary,
 }: {
 	dictionary?: { [key: string]: string };
 }) => {
+	const formSchema = z.object({
+		trackingNumber: z.string().min(6, {
+			message: dictionary?.validationMessage,
+		}),
+	});
 	// console.log(dictionary);
 
-	// 1. Define your form.
+	// 1. Define the form.
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {

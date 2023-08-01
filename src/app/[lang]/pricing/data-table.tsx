@@ -27,7 +27,7 @@ import { Input } from "@/components/ui/input";
 interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[];
 	data: TData[];
-	dictionary: { [key: string]: string };
+	dictionary?: any;
 }
 
 export function DataTable<TData, TValue>({
@@ -55,7 +55,7 @@ export function DataTable<TData, TValue>({
 	});
 
 	return (
-		<div className="">
+		<div className="overflow-x-auto">
 			<div className="flex items-center justify-end mb-6 rtl:justify-start lg:mb-8">
 				<Input
 					placeholder={`${dictionary?.["Filter by city"]}...`}

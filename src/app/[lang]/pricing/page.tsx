@@ -128,13 +128,13 @@ export default async function page({
 	const TitleLastWord = words[words.length - 1];
 
 	return (
-		<section className="py-24 xl:py-32">
+		<section className="py-24 overflow-hidden xl:py-32">
 			<div className="container">
 				<Heading variant="h1" className="text-center rtl:leading-snug">
 					{/* Zone de livraison <br className="" /> et{" "}
 					<span className="text-dark/90">tarifs</span> */}
 					{TitleFirstPart} <br className="" />
-					<span className="text-transparent bg-clip-text bg-gradient-to-tr from-dark via-gray-700 to-gray-500">
+					<span className="text-transparent bg-clip-text bg-gradient-to-r from-dark via-gray-700 to-gray-500">
 						{TitleLastWord}
 					</span>
 				</Heading>
@@ -148,4 +148,18 @@ export default async function page({
 			</div>
 		</section>
 	);
+}
+
+//  Dynamic metadata
+export async function generateMetadata({
+	params,
+}: {
+	params: { lang: Locale };
+}) {
+	const dict = await getDictionary(params?.lang);
+	console.log(dict?.metadata);
+
+	return {
+		title: `${dict?.metadata?.title} | ${dict?.pricing?.title}`,
+	};
 }

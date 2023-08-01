@@ -145,6 +145,13 @@
 		"tracking number": "N° de suivi",
 		"previous": "Précédent",
 		"next": "Suivant",
-		"Filter by city": "Filtre par ville"
+		"Filter by city": "Filtre par ville",
+		"validation": {
+			"trackingNumber": "Entrez un numero de suivi valide"
+		}
+	},
+	"metadata": {
+		"title": "Metalivraison",
+		"description": "On—time Satisfaction"
 	}
 }

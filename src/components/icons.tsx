@@ -20,6 +20,8 @@ import {
 	Bike,
 	MapPin,
 	Clock3,
+	Menu,
+	MoreHorizontal,
 } from "lucide-react";
 
 export type Icon = typeof LucideIcon;
@@ -43,6 +45,8 @@ export const Icons = {
 	instagram: Instagram,
 	mapPin: MapPin,
 	clock3: Clock3,
+	menu: Menu,
+	more: MoreHorizontal,
 	logoTeamDark: (props: LucideProps) => (
 		<svg
 			{...props}
