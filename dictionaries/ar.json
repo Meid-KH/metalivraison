@@ -146,6 +146,11 @@
 		"previous": "السابق",
 		"next": "التالي",
 		"Filter by city": "تصفية حسب المدينة",
+		"Parcel delivered": "تم تسليم الطرد",
+		"Parcel picked": "تم التقاط الطرد",
+		"Parcel received": "تم استلام الطرد",
+		"Parcel shipped": "تم شحن الطرد",
+		"Distribution": "جاري التوزيع",
 		"validation": {
 			"trackingNumber": "أدخل رقم تتبع صالحًا"
 		}

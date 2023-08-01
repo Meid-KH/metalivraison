@@ -40,9 +40,11 @@ const page = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 							>
 								<Icons.check className="w-8 h-8" />
 							</span>
-							<div className="absolute left-0 overflow-hidden text-center -translate-y-4 border border-primary w-max -translate-x-1/2___ rounded-xl bottom-full">
+							<div className="absolute left-0 overflow-hidden text-center -translate-y-4 border rtl:left-auto rtl:right-0 border-primary w-max -translate-x-1/2___ rounded-xl bottom-full">
 								<div className="p-4">
-									<h2 className="">Colis Ramassé</h2>
+									<h2 className="">
+										{dict?.global?.["Parcel picked"]}
+									</h2>
 								</div>
 								<footer className="flex justify-between gap-3 p-3 text-xs text-white bg-primary">
 									<span>Casablanca</span>
@@ -87,7 +89,9 @@ const page = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 							</span>
 							<div className="absolute overflow-hidden text-center -translate-x-1/2 -translate-y-4 border border-primary left-1/2 w-max rounded-xl bottom-full">
 								<div className="p-4">
-									<h2 className="">Colis Ramassé</h2>
+									<h2 className="">
+										{dict?.global?.["Parcel shipped"]}
+									</h2>
 								</div>
 								<footer className="flex justify-between gap-3 p-3 text-xs text-white bg-primary">
 									<span>Fes</span>
@@ -125,9 +129,11 @@ const page = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 									strokeWidth={1.5}
 								/>
 							</span>
-							<div className="absolute right-0 overflow-hidden text-center -translate-y-4 border border-gray-400 w-max -translate-x-1/2___ rounded-xl bottom-full">
+							<div className="absolute right-0 overflow-hidden text-center -translate-y-4 border border-gray-400 rtl:right-auto rtl:left-0 w-max -translate-x-1/2___ rounded-xl bottom-full">
 								<div className="p-4">
-									<h2 className="">Colis Ramassé</h2>
+									<h2 className="">
+										{dict?.global?.["Parcel delivered"]}
+									</h2>
 								</div>
 								<footer className="flex justify-between gap-3 p-3 text-xs text-white bg-gray-400">
 									<span>--</span>

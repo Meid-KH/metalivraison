@@ -146,6 +146,11 @@
 		"previous": "Précédent",
 		"next": "Suivant",
 		"Filter by city": "Filtre par ville",
+		"Parcel delivered": "Colis livré",
+		"Parcel picked": "Colis Ramassé",
+		"Parcel received": "Colis reçu",
+		"Parcel shipped": "Colis expédié",
+		"Distribution": "Mise en distribution",
 		"validation": {
 			"trackingNumber": "Entrez un numero de suivi valide"
 		}
