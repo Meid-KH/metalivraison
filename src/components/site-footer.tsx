@@ -118,7 +118,7 @@ export default function Footer() {
 						<LinkWithLocale
 							href="/team/login"
 							className={cn(
-								"flex items-center gap-2 mx-auto sm:ml-auto rtl:ml-0 rtl:sm:mr-auto w-max text-xs tracking-wider text-center uppercase group"
+								"flex items-center gap-2 mx-auto sm:ml-auto rtl:sm:mr-auto w-max text-xs tracking-wider text-center uppercase group"
 							)}
 						>
 							<span className="underline-offset-4 group-hover:underline group-hover:text-gray-200">
