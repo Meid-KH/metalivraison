@@ -40,7 +40,7 @@ const page = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 							>
 								<Icons.check className="w-8 h-8" />
 							</span>
-							<div className="absolute left-0 overflow-hidden text-center -translate-y-4 border border-blue-700 w-max -translate-x-1/2___ rounded-xl bottom-full">
+							<div className="absolute left-0 overflow-hidden text-center -translate-y-4 border border-primary w-max -translate-x-1/2___ rounded-xl bottom-full">
 								<div className="p-4">
 									<h2 className="">Colis Ramassé</h2>
 								</div>
@@ -85,7 +85,7 @@ const page = async ({ params: { lang } }: { params: { lang: Locale } }) => {
 									strokeWidth={1}
 								/>
 							</span>
-							<div className="absolute overflow-hidden text-center -translate-x-1/2 -translate-y-4 border border-blue-700 left-1/2 w-max rounded-xl bottom-full">
+							<div className="absolute overflow-hidden text-center -translate-x-1/2 -translate-y-4 border border-primary left-1/2 w-max rounded-xl bottom-full">
 								<div className="p-4">
 									<h2 className="">Colis Ramassé</h2>
 								</div>

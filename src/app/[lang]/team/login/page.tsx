@@ -28,7 +28,7 @@ const TeamLoginPage: React.FC<{ params: { lang: Locale } }> = async ({
 			</LinkWithLocale>
 			<div className="grid h-screen overflow-hidden sm:grid-cols-2">
 				{/* Column 1: Illustration  */}
-				<div className="hidden p-6 place-items-center bg-gradient-radial from-gray-700 via-gray-800 to-gray-900 sm:grid rtl:order-last">
+				<div className="hidden p-6 place-items-center bg-[#081C29] sm:grid rtl:order-last">
 					<Image
 						className="sticky -translate-y-1/2 top-1/2"
 						src="/img/team-login.png"
@@ -39,7 +39,7 @@ const TeamLoginPage: React.FC<{ params: { lang: Locale } }> = async ({
 				</div>
 
 				{/* Column 2: Login Form */}
-				<div className="relative grid p-6 pb-12 overflow-y-auto text-gray-100 border-l border-gray-800 bg-gradient-radial from-gray-900 via-dark to-black place-items-center">
+				<div className="relative grid p-6 pb-12 overflow-y-auto text-gray-100 border-l border-gray-800/80 bg-gradient-radial from-[#0d283a] via-[#081C29] to-[#081C29] place-items-center">
 					<section className="w-full max-w-md">
 						<LinkWithLocale
 							href="/"
@@ -51,7 +51,7 @@ const TeamLoginPage: React.FC<{ params: { lang: Locale } }> = async ({
 					</section>
 					{/* footer */}
 					<footer className="absolute inset-x-0 bottom-0 py-4">
-						<p className="text-xs tracking-wider text-center uppercase text-gray-500/90">
+						<p className="text-xs tracking-wider text-center uppercase text-primary-foreground/80">
 							{dict?.global?.Metalivraison} ©{" "}
 							{new Date().getFullYear()} —{" "}
 							{dict?.global?.copyright}

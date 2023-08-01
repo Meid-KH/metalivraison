@@ -66,6 +66,12 @@ export async function generateMetadata({
 	return {
 		title: dict?.metadata?.title,
 		description: dict?.metadata?.description,
+		viewport: {
+			width: "device-width",
+			initialScale: 1,
+			maximumScale: 1,
+			userScalable: "no",
+		},
 		themeColor: [
 			{ media: "(prefers-color-scheme: light)", color: "white" },
 			{ media: "(prefers-color-scheme: dark)", color: "black" },

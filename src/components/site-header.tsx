@@ -97,7 +97,7 @@ const Header = () => {
 
 			<header className="sticky top-0 z-20 py-3 lg:py-4 bg-gray-200/40 backdrop-blur-xl">
 				<div className="container">
-					<div className="flex items-center justify-between gap-6 rtl:flex-row-reverse">
+					<div className="flex items-center justify-between gap-6 rtl:flex-row-reverse lg:rtl:flex-row">
 						{/* Logo */}
 						<LinkWithLocale href={`/`} className="block md:w-56">
 							{lang === "ar" ? (
@@ -130,22 +130,12 @@ const Header = () => {
 						</ul>
 
 						{/* CTA Button */}
-						<div className="items-center flex-shrink-0 hidden gap-3 lg:flex">
-							<LinkWithLocale
-								href={`/register`}
-								className={cn(
-									buttonVariants({}),
-									"h-10 px-5 text-sm"
-								)}
-							>
-								{lang === "fr" && "Livrer avec metalivraison"}
-								{lang === "ar" && "تسجل الآن"}
-							</LinkWithLocale>
+						<div className="items-center flex-shrink-0 hidden gap-1.5 lg:flex">
 							<LinkWithLocale
 								href={`/login`}
 								className={cn(
-									buttonVariants({ size: "icon" }),
-									"w-10 h-10 text-sm"
+									buttonVariants({}),
+									"h-10 text-sm font-medium px-4 bg-transparent underline underline-offset-4 text-dark duration-150 hover:text-primary-foreground hover:no-underline"
 								)}
 								title={
 									lang === "fr"
@@ -154,7 +144,20 @@ const Header = () => {
 								}
 							>
 								{/* Se connecter */}
-								<Icons.login className="w-5 h-5 rtl:-scale-x-100" />
+								{/* <Icons.login className="w-5 h-5 rtl:-scale-x-100" /> */}
+								{lang === "fr"
+									? "Se connecter"
+									: "تسجيل الدخول"}
+							</LinkWithLocale>
+							<LinkWithLocale
+								href={`/register`}
+								className={cn(
+									buttonVariants({}),
+									"h-10 px-4 text-sm"
+								)}
+							>
+								{lang === "fr" && "Enregistrer"}
+								{lang === "ar" && "تسجل الآن"}
 							</LinkWithLocale>
 						</div>
 
@@ -229,55 +232,78 @@ const MobileMenu: React.FC<{
 
 				<div className="fixed inset-0 flex flex-col">
 					{/* The actual dialog panel  */}
-					<Dialog.Panel className="h-full max-w-xs p-4 text-gray-100 bg-dark">
-						<Dialog.Title className="text-xl font-bold text-gray-50">
+					<Dialog.Panel className="h-full max-w-xs p-4 text-gray-100 bg-dark/90 backdrop-blur">
+						<Button
+							onClick={() => onClose()}
+							size="icon"
+							className="absolute grid bg-black border border-white/20 right-4 rtl:right-auto rtl:left-4 top-4 w-9 h-9 place-items-center"
+						>
+							<Icons.close className="w-5 h-5" />
+						</Button>
+						<div className="mt-10 text-2xl font-bold tracking-tight rtl:tracking-normal text-gray-50">
 							{lang === "fr" && "Menu"}
 							{lang === "ar" && "القائمة"}
-						</Dialog.Title>
-						<Dialog.Description className="pt-10">
-							<ul className="flex flex-col gap-0.5">
+						</div>
+						<Dialog.Description className="">
+							<ul className="flex flex-col mt-2.5 bg-black/90 backdrop-blur-lg rounded-xl">
 								{menuItems.map((item, index) => (
-									<li key={index}>
+									<li
+										key={index}
+										className="[&:not(:last-child)]:border-b border-white/10"
+									>
 										<LinkWithLocale
 											href={item.path}
+											onClick={() => onClose()}
 											className={cn(
-												"font-medium py-3 px-3 inline-flex",
-												pathName === item.path &&
-													"text-white before:opacity-100 before:scale-100"
+												"font-medium___ py-3 px-4 flex gap-3 justify-between items-center",
+												pathName === item.path && ""
 											)}
 										>
 											{lang === "fr" && item.title.fr}
 											{lang === "ar" && item.title.ar}
+											<Icons.arrowRight className="w-4 h-4 rtl:-scale-100" />
 										</LinkWithLocale>
 									</li>
 								))}
 							</ul>
-							{/* CTA Button */}
-							<div className="flex flex-col items-center flex-shrink-0 gap-3 mt-10">
-								<LinkWithLocale
-									href={`/login`}
-									className={cn(
-										buttonVariants({ variant: "outline" }),
-										"text-sm font-medium w-full"
-									)}
-								>
-									{/* Se connecter */}
-									{lang === "fr"
-										? "Se connecter"
-										: "تسجيل الدخول"}
-								</LinkWithLocale>
-								<LinkWithLocale
-									href={`/register`}
-									className={cn(
-										buttonVariants({ variant: "outline" }),
-										"text-sm font-medium w-full"
-									)}
-								>
-									{lang === "fr" &&
-										"Livrer avec metalivraison"}
-									{lang === "ar" && "تسجل الآن"}
-								</LinkWithLocale>
+
+							<div className="mt-10 text-2xl font-bold tracking-tight rtl:tracking-normal text-gray-50">
+								{lang === "fr" && "Livrer avec nous"}
+								{lang === "ar" && "إبدأ التوصيل معنا"}
 							</div>
+							{/* CTA Button */}
+							<ul className="flex flex-col mt-2.5 bg-black/90 backdrop-blur-lg rounded-xl">
+								<li className="[&:not(:last-child)]:border-b border-white/10">
+									<LinkWithLocale
+										href={`/login`}
+										onClick={() => onClose()}
+										className={cn(
+											"font-medium___ py-3 px-4 flex gap-3 justify-between items-center",
+											""
+										)}
+									>
+										{/* Se connecter */}
+										{lang === "fr"
+											? "Se connecter"
+											: "تسجيل الدخول"}
+										<Icons.arrowRight className="w-4 h-4 rtl:-scale-100" />
+									</LinkWithLocale>
+								</li>
+
+								<li className="[&:not(:last-child)]:border-b border-white/10">
+									<LinkWithLocale
+										href={`/register`}
+										onClick={() => onClose()}
+										className={cn(
+											"font-medium___ py-3 px-4 flex gap-3 justify-between items-center"
+										)}
+									>
+										{lang === "fr" && "Enregistrez-vous"}
+										{lang === "ar" && "تسجل الآن"}
+										<Icons.arrowRight className="w-4 h-4 rtl:-scale-100" />
+									</LinkWithLocale>
+								</li>
+							</ul>
 						</Dialog.Description>
 					</Dialog.Panel>
 				</div>

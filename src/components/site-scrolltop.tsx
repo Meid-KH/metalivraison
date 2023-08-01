@@ -13,7 +13,7 @@ const ScrollTop = () => {
 			const screenHeight = window.innerHeight;
 
 			// Change state to show/hide Scroll to Top button
-			setIsScrollTopVisible(scrollTopOffset >= 20);
+			setIsScrollTopVisible(scrollTopOffset >= 800);
 		};
 
 		window.addEventListener("scroll", handleScroll);
@@ -32,7 +32,7 @@ const ScrollTop = () => {
 			onClick={handleScrollToTop}
 			className={cn(
 				"fixed z-50 w-14 h-14 border rounded-full right-4 lg:right-6 bottom-28 sm:bottom-20 lg:bottom-9 place-items-center",
-				"border-foreground backdrop-blur bg-black/90 text-primary-foreground duration-100 opacity-90",
+				"border-foreground backdrop-blur-lg bg-gradient-to-t from-dark bg-black/90 text-primary-foreground duration-100 opacity-90",
 				"hover:opacity-100 active:scale-95 hover:border-white",
 				isScrollTopVisible ? "grid" : "hidden"
 			)}

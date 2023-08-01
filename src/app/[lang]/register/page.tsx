@@ -41,7 +41,7 @@ const RegisterPage: React.FC<{ params: { lang: Locale } }> = async ({
 				</div>
 
 				{/* Column 2: Login Form */}
-				<div className="relative grid px-6 pt-32 bg-gray-100 xl:px-8 place-items-center pb-14">
+				<div className="relative grid px-6 pt-32 pb-20 bg-gray-100 xl:px-8 place-items-center">
 					<div className={cn("w-full max-w-3xl")}>
 						<LinkWithLocale
 							href="/"
