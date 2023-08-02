@@ -92,6 +92,7 @@ const Tracking = async ({ lang }: { lang: Locale }) => {
 	const formDict = {
 		cta: dict?.global?.Track,
 		placeholder: dict?.global?.["tracking number"],
+		validationMessage: dict?.global?.validation?.trackingNumber,
 	};
 	return (
 		<section id="tracking" className="py-24 bg-gray-100">
