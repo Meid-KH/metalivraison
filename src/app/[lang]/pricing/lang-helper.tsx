@@ -35,7 +35,12 @@ const LangHelper: React.FC<{ col: string }> = ({ col }) => {
 	const { lang } = useParams();
 	// console.log(lang);
 
-	return <span> {dictionary?.[(lang as string) || "fr"]?.[col]} </span>;
+	return (
+		<span className="flex-shrink-0 w-max">
+			{" "}
+			{dictionary?.[(lang as string) || "fr"]?.[col]}{" "}
+		</span>
+	);
 };
 
 export default LangHelper;

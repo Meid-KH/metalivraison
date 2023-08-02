@@ -128,7 +128,7 @@ export default async function page({
 	const TitleLastWord = words[words.length - 1];
 
 	return (
-		<section className="py-24 overflow-hidden xl:py-32">
+		<section className="py-24 xl:py-32">
 			<div className="container">
 				<Heading variant="h1" className="text-center rtl:leading-snug">
 					{/* Zone de livraison <br className="" /> et{" "}

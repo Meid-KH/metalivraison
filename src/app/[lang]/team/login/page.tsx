@@ -28,9 +28,8 @@ const TeamLoginPage: React.FC<{ params: { lang: Locale } }> = async ({
 			</LinkWithLocale>
 			<div className="grid h-screen overflow-hidden sm:grid-cols-2">
 				{/* Column 1: Illustration  */}
-				<div className="hidden p-6 place-items-center bg-[#081C29] sm:grid rtl:order-last">
+				<div className="hidden px-6 bg-[#081C29] sm:grid place-items-center rtl:order-last">
 					<Image
-						className="sticky -translate-y-1/2 top-1/2"
 						src="/img/team-login.png"
 						width={800}
 						height={600}

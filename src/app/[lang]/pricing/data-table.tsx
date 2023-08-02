@@ -55,7 +55,7 @@ export function DataTable<TData, TValue>({
 	});
 
 	return (
-		<div className="overflow-x-auto">
+		<div className="">
 			<div className="flex items-center justify-end mb-6 rtl:justify-start lg:mb-8">
 				<Input
 					placeholder={`${dictionary?.["Filter by city"]}...`}
@@ -124,7 +124,7 @@ export function DataTable<TData, TValue>({
 					</TableBody>
 				</Table>
 			</div>
-			<div className="flex items-center justify-end gap-4 mt-6 lg:mt-8">
+			<div className="flex items-center justify-end gap-4 mt-6 rtl:flex-row-reverse lg:mt-8">
 				<Button
 					variant="outline"
 					size="sm"

@@ -28,11 +28,10 @@ const RegisterPage: React.FC<{ params: { lang: Locale } }> = async ({
 			>
 				<Icons.close className="group-hover:scale-125" />
 			</LinkWithLocale>
-			<div className="grid min-h-screen sm:grid-cols-2">
+			<div className="grid h-screen overflow-hidden sm:grid-cols-2">
 				{/* Column 1: Illustration  */}
-				<div className="hidden p-6 sm:grid rtl:order-last">
+				<div className="hidden px-6 sm:grid place-items-center rtl:order-last">
 					<Image
-						className="sticky -translate-y-1/2 top-1/2"
 						src="/img/register.png"
 						width={500}
 						height={500}
@@ -41,7 +40,7 @@ const RegisterPage: React.FC<{ params: { lang: Locale } }> = async ({
 				</div>
 
 				{/* Column 2: Login Form */}
-				<div className="relative grid px-6 pt-32 pb-20 bg-gray-100 xl:px-8 place-items-center">
+				<div className="relative grid px-6 pt-32 pb-20 overflow-y-auto bg-gray-100 xl:px-8 place-items-center">
 					<div className={cn("w-full max-w-3xl")}>
 						<LinkWithLocale
 							href="/"

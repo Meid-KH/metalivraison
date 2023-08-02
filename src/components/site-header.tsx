@@ -232,7 +232,7 @@ const MobileMenu: React.FC<{
 
 				<div className="fixed inset-0 flex flex-col">
 					{/* The actual dialog panel  */}
-					<Dialog.Panel className="h-full max-w-xs p-4 text-gray-100 bg-dark/90 backdrop-blur">
+					<Dialog.Panel className="h-full max-w-xs min-h-screen p-4 overflow-y-auto text-gray-100 bg-dark/95 backdrop-blur">
 						<Button
 							onClick={() => onClose()}
 							size="icon"
@@ -261,7 +261,7 @@ const MobileMenu: React.FC<{
 										>
 											{lang === "fr" && item.title.fr}
 											{lang === "ar" && item.title.ar}
-											<Icons.arrowRight className="w-4 h-4 rtl:-scale-100" />
+											<Icons.arrowRight className="w-4 h-4 rtl:-scale-100 text-white/60" />
 										</LinkWithLocale>
 									</li>
 								))}
@@ -286,7 +286,7 @@ const MobileMenu: React.FC<{
 										{lang === "fr"
 											? "Se connecter"
 											: "تسجيل الدخول"}
-										<Icons.arrowRight className="w-4 h-4 rtl:-scale-100" />
+										<Icons.arrowRight className="w-4 h-4 rtl:-scale-100 text-white/60" />
 									</LinkWithLocale>
 								</li>
 
@@ -300,7 +300,7 @@ const MobileMenu: React.FC<{
 									>
 										{lang === "fr" && "Enregistrez-vous"}
 										{lang === "ar" && "تسجل الآن"}
-										<Icons.arrowRight className="w-4 h-4 rtl:-scale-100" />
+										<Icons.arrowRight className="w-4 h-4 rtl:-scale-100 text-white/60" />
 									</LinkWithLocale>
 								</li>
 							</ul>

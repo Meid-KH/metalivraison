@@ -32,7 +32,7 @@ export const columns: ColumnDef<Payment>[] = [
 				<Button
 					variant={"ghost"}
 					size={"sm"}
-					className="inline-flex h-8 gap-1 py-1 -ml-3 rtl:ml-0 rtl:-mr-3 hover:bg-gray-200"
+					className="flex h-8 gap-1 py-1 -ml-3 text-xs lg:text-sm rtl:ml-0 rtl:-mr-3 hover:bg-gray-200"
 					onClick={() =>
 						column.toggleSorting(column.getIsSorted() === "asc")
 					}
@@ -49,13 +49,13 @@ export const columns: ColumnDef<Payment>[] = [
 			<Button
 				variant="ghost"
 				size={"sm"}
-				className="flex gap-1.5 h-8 py-1 hover:bg-gray-200"
+				className="text-xs lg:text-sm flex gap-1.5 h-8 py-1 hover:bg-gray-200"
 				onClick={() =>
 					column.toggleSorting(column.getIsSorted() === "asc")
 				}
 			>
 				<LangHelper col="shippingFee" />
-				<span className="px-1.5 text-xs bg-gray-200 border rounded-full border-dark/20">
+				<span className="px-1.5 bg-gray-200 border rounded-full border-dark/20">
 					<LangHelper col="currency" />
 				</span>
 				<ArrowUpDown className="flex-shrink-0 w-4 h-4 ml-1" />
@@ -67,7 +67,7 @@ export const columns: ColumnDef<Payment>[] = [
 		header: ({ column }) => (
 			<div className="flex gap-1.5 items-end justify-center">
 				<LangHelper col="refusalFee" />
-				<span className="px-1.5 text-xs bg-gray-200 border rounded-full border-dark/20">
+				<span className="px-1.5 bg-gray-200 border rounded-full border-dark/20">
 					<LangHelper col="currency" />
 				</span>
 			</div>
@@ -78,7 +78,7 @@ export const columns: ColumnDef<Payment>[] = [
 		header: ({ column }) => (
 			<div className="flex gap-1.5 items-end justify-center">
 				<LangHelper col="returnFee" />
-				<span className="px-1.5 text-xs bg-gray-200 border rounded-full border-dark/20">
+				<span className="px-1.5 bg-gray-200 border rounded-full border-dark/20">
 					<LangHelper col="currency" />
 				</span>
 			</div>
@@ -107,7 +107,7 @@ export const columns: ColumnDef<Payment>[] = [
 							variant="outline"
 							className="w-8 h-8 p-0 focus:ring-offset-0 focus:ring-0"
 						>
-							<span className="sr-only">Open menu</span>
+							{/* <span className="sr-only">Open menu</span> */}
 							<MoreHorizontal className="w-4 h-4" />
 						</Button>
 					</DropdownMenuTrigger>
@@ -119,7 +119,7 @@ export const columns: ColumnDef<Payment>[] = [
 							<LangHelper col="actions" />
 						</DropdownMenuLabel>
 						<DropdownMenuItem
-							className="justify-end rtl:text-right"
+							className="rtl:justify-end rtl:text-right"
 							onClick={() =>
 								navigator.clipboard.writeText("Text-copied")
 							}
@@ -127,10 +127,10 @@ export const columns: ColumnDef<Payment>[] = [
 							<LangHelper col="copy" />
 						</DropdownMenuItem>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem className="justify-end rtl:text-right">
+						<DropdownMenuItem className="rtl:justify-end rtl:text-right">
 							<LangHelper col="deliverHere" />
 						</DropdownMenuItem>
-						<DropdownMenuItem className="justify-end rtl:text-right">
+						<DropdownMenuItem className="rtl:justify-end rtl:text-right">
 							<LangHelper col="viewMore" />
 						</DropdownMenuItem>
 					</DropdownMenuContent>
