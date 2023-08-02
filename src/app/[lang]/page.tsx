@@ -390,7 +390,7 @@ const Contact = async ({ lang }: { lang: Locale }) => {
 					</div>
 				</div>
 			</div>
-			<div className="py-16 mt-16 bg-gray-100">
+			<div className="py-24 mt-24 bg-gray-100">
 				<div className="container">
 					<ul className="grid gap-6 grid-col-1 sm:grid-cols-2 md:grid-cols-3 md:gap-8">
 						{/* <li className="p-6 lg:p-8 rounded-2xl border border-gray-200 bg-white flex flex-col gap-1.5 text-center">
