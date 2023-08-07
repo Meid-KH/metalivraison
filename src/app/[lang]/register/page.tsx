@@ -22,7 +22,7 @@ const RegisterPage: React.FC<{ params: { lang: Locale } }> = async ({
 				href="/"
 				className={cn(
 					buttonVariants({ size: "icon", variant: "outline" }),
-					"absolute z-10 grid w-20 h-20 top-6 right-6 place-items-center bg-white",
+					"absolute z-10 grid w-20 h-20 top-6 right-6 place-items-center bg-white/80 backdrop-blur-lg",
 					"transition group hover:text-white hover:bg-dark hover:scale-90 hover:drop-shadow"
 				)}
 			>
@@ -40,31 +40,37 @@ const RegisterPage: React.FC<{ params: { lang: Locale } }> = async ({
 				</div>
 
 				{/* Column 2: Login Form */}
-				<div className="relative grid px-6 pt-32 pb-20 overflow-y-auto bg-gray-100 xl:px-8 place-items-center">
-					<div className={cn("w-full max-w-3xl")}>
-						<LinkWithLocale
-							href="/"
-							className="block w-64 max-w-full mb-8 lg:w-80 rtl:mx-auto"
-						>
-							{lang === "ar" ? (
-								<Icons.logoAccount />
-							) : (
-								<Icons.logoAccount />
+				<div className="relative overflow-y-auto bg-gray-100">
+					<div className="flex flex-col w-full h-full gap-8 pt-28">
+						<div
+							className={cn(
+								"flex-1 flex flex-col justify-center max-w-3xl px-6 xl:px-8"
 							)}
-						</LinkWithLocale>
-						<h1 className="mb-12 text-sm tracking-wide text-gray-500 rtl:text-center">
-							{dict?.account?.["Deliver with Metalivraison"]}
-						</h1>
-						<RegisterForm dictionary={allDict} />
+						>
+							<LinkWithLocale
+								href="/"
+								className="block w-64 max-w-full mb-8 lg:w-80 rtl:mx-auto"
+							>
+								{lang === "ar" ? (
+									<Icons.logoAccount />
+								) : (
+									<Icons.logoAccount />
+								)}
+							</LinkWithLocale>
+							<h1 className="mb-12 text-sm tracking-wide text-gray-500 rtl:text-center">
+								{dict?.account?.["Deliver with Metalivraison"]}
+							</h1>
+							<RegisterForm dictionary={allDict} />
+						</div>
+						{/* footer */}
+						<footer className="flex-shrink-0 py-4">
+							<p className="text-xs tracking-wider text-center uppercase text-gray-500/90">
+								{dict?.global?.Metalivraison} ©{" "}
+								{new Date().getFullYear()} —{" "}
+								{dict?.global?.copyright}
+							</p>
+						</footer>
 					</div>
-					{/* footer */}
-					<footer className="absolute inset-x-0 bottom-0 py-4">
-						<p className="text-xs tracking-wider text-center uppercase text-gray-500/90">
-							{dict?.global?.Metalivraison} ©{" "}
-							{new Date().getFullYear()} —{" "}
-							{dict?.global?.copyright}
-						</p>
-					</footer>
 				</div>
 			</div>
 		</main>

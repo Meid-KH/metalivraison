@@ -77,7 +77,10 @@ const Header = () => {
 			<nav className="py-2 text-xs font-medium bg-white">
 				<div className="container">
 					<div className="flex items-center justify-between gap-6">
-						<span className="flex items-center gap-1.5">
+						<LinkWithLocale
+							href="/register"
+							className="flex items-center gap-1.5 group"
+						>
 							<i className="grid w-5 h-5 rounded-full place-items-center bg-primary text-primary-foreground">
 								<Icons.arrowRight
 									className={cn(
@@ -85,10 +88,13 @@ const Header = () => {
 									)}
 								/>
 							</i>
-							{/* {dictionary.index?.hero?.title} */}
-							{lang === "fr" && "Livrer avec metalivraison"}
-							{lang === "ar" && "احترف التجارة الإلكترونية الآن"}
-						</span>
+							<span className="underline-offset-4 group-hover:underline">
+								{/* {dictionary.index?.hero?.title} */}
+								{lang === "fr" && "Livrer avec metalivraison"}
+								{lang === "ar" &&
+									"احترف التجارة الإلكترونية الآن"}
+							</span>
+						</LinkWithLocale>
 
 						<LocaleSwitcher />
 					</div>
@@ -134,8 +140,8 @@ const Header = () => {
 							<LinkWithLocale
 								href={`/login`}
 								className={cn(
-									buttonVariants({}),
-									"h-10 text-sm font-medium px-4 bg-transparent underline underline-offset-4 text-dark duration-150 hover:text-primary-foreground hover:no-underline"
+									buttonVariants({ variant: "outline" }),
+									"h-10 text-sm font-medium px-4 border-transparent underline-offset-4 text-dark duration-150 hover:drop-shadow-none hover:underline"
 								)}
 								title={
 									lang === "fr"
